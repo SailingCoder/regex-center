@@ -32,8 +32,8 @@ const basic: RegexCollection = {
     default: 'basic',
     groups: {
       basic: {
-        pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        description: '基础邮箱格式',
+        pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        description: '基础邮箱格式（用户名允许字母、数字、._%+-，域名允许字母、数字、.-，顶级域名至少 2 个字母）',
         examples: {
           valid: ['test@example.com', 'user@domain.org', 'name123@site.co', 'user.name@test-domain.com'],
           invalid: ['invalid-email', 'user@', '@domain.com', 'user space@domain.com', 'user@domain', 'user@@domain.com']
@@ -116,7 +116,7 @@ const basic: RegexCollection = {
     default: 'basic',
     groups: {
       basic: {
-        pattern: /^https?:\/\/[^\s/$.?#].[^\s]*$/i,
+        pattern: /^https?:\/\/[a-zA-Z0-9.-]+(?::[0-9]+)?(?:\/[a-zA-Z0-9._~:/?#[\]@!$&'()*+,;=-]*)?$/i,
         description: '基础URL格式（http/https）',
         examples: {
           valid: ['https://example.com', 'http://test.org/path', 'https://sub.domain.com/path?query=1', 'http://192.168.1.1:8080', 'https://www.example.com'],
