@@ -1,6 +1,6 @@
 # Regex Kit 内置正则参考手册
 
-[简体中文](https://github.com/SailingCoder/regex-pro/blob/main/doc/REGEX_REFERENCE.md) | [English](https://github.com/SailingCoder/regex-pro/blob/main/docs/REGEX_REFERENCE_EN.md)
+[简体中文](https://github.com/SailingCoder/regex-hub/blob/main/doc/REGEX_REFERENCE.md) | [English](https://github.com/SailingCoder/regex-hub/blob/main/docs/REGEX_REFERENCE_EN.md)
 
 本文档汇总了 Regex Kit 内置的全部正则表达式，按类别分组，便于快速查找与使用。共涵盖 14 个分类文件、113 大类验证规则，几乎覆盖 99.9% 的日常开发场景。
 
@@ -2029,7 +2029,7 @@
 ### 基本用法
 
 ```javascript
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 
 // 使用基本类型（默认分组）
 rx.test('test@example.com', 'email');  // true
@@ -2350,17 +2350,17 @@ console.log(emailRegex);  // /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 ### 30秒上手
 
 ```bash
-npm install regex-pro
+npm install regex-hub
 ```
 
 **快速验证安装**：
 ```javascript
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 console.log(rx.test('email', 'user@example.com')); // 应该输出: true
 ```
 
 ```javascript
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 
 // 获取和验证
 rx.get('email');                          // → /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -2419,7 +2419,7 @@ rx.use({
 
 ### 联系方式
 
-- **问题反馈**: [GitHub Issues](https://github.com/SailingCoder/regex-pro/issues)
-- **详细文档**: [官方文档](https://github.com/SailingCoder/regex-pro)
+- **问题反馈**: [GitHub Issues](https://github.com/SailingCoder/regex-hub/issues)
+- **详细文档**: [官方文档](https://github.com/SailingCoder/regex-hub)
 
-*本文档涵盖了Regex Kit中所有内置正则表达式。如需最新版本，请访问 [官方仓库](https://github.com/SailingCoder/regex-pro)。*
+*本文档涵盖了Regex Kit中所有内置正则表达式。如需最新版本，请访问 [官方仓库](https://github.com/SailingCoder/regex-hub)。*

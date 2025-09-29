@@ -1,6 +1,6 @@
 # Regex Kit
 
-[简体中文](https://github.com/SailingCoder/regex-pro/blob/main/README.md) | [English](https://github.com/SailingCoder/regex-pro/blob/main/docs/README_EN.md)
+[简体中文](https://github.com/SailingCoder/regex-hub/blob/main/README.md) | [English](https://github.com/SailingCoder/regex-hub/blob/main/docs/README_EN.md)
 
 **Regex Kit = 正则 + 管理**，一个专业的正则表达式管理库，让团队和项目的正则变得可管理、可维护、可复用。
 
@@ -8,7 +8,7 @@
 - **开箱即用**：内置 100+ 精选正则，覆盖常见场景
 - **团队管理**：搭建属于你的正则管理体系，统一团队标准
 
-[![npm version](https://badge.fury.io/js/regex-pro.svg)](https://badge.fury.io/js/regex-pro)
+[![npm version](https://badge.fury.io/js/regex-hub.svg)](https://badge.fury.io/js/regex-hub)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
@@ -28,13 +28,13 @@
 ### 安装
 
 ```bash
-npm install regex-pro
+npm install regex-hub
 ```
 
 ### 方案一：直接使用内置正则（开箱即用）
 ```javascript
 // 100+ 内置精选正则，覆盖常见场景
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 
 // 获取和验证
 rx.get('email');                          // → /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -146,7 +146,7 @@ rx.use({
 | **密码** | `password:medium` | 中等强度密码 | `rx.test('password:medium', 'Password123')` |
 | | `password:strong` | 强密码 | `rx.test('password:strong', 'Password123!')` |
 
-> **[内置正则大全](https://github.com/SailingCoder/regex-pro/blob/main/docs/REGEX_REFERENCE.md)** - 查看完整的100+种内置正则详细说明
+> **[内置正则大全](https://github.com/SailingCoder/regex-hub/blob/main/docs/REGEX_REFERENCE.md)** - 查看完整的100+种内置正则详细说明
 
 ### 2. 分组语法，统一管理
 ```javascript
@@ -173,7 +173,7 @@ rx.info('password').groups;  // ['weak', 'medium', 'strong']
 
 ### 3. 函数式调用（可选）
 ```javascript
-import { get, test, info, extract, findAll, removeAll, add } from 'regex-pro';
+import { get, test, info, extract, findAll, removeAll, add } from 'regex-hub';
 
 // 无需 rx 前缀，更简洁
 const emailRegex = get('email');
@@ -200,7 +200,7 @@ rx.highlight('phone:CN', text, '<mark>$&</mark>'); // 高亮显示
 
 ### 5. 批量操作
 ```javascript
-import { extractBatch, replaceBatch, countBatch } from 'regex-pro/operations/batch';
+import { extractBatch, replaceBatch, countBatch } from 'regex-hub/operations/batch';
 
 const text = '联系方式：user@example.com，电话：13800138000，网站：https://example.com';
 
@@ -347,7 +347,7 @@ function validateUser(email, phone, idCard) {
 **Regex Kit**：
 ```javascript
 // 简洁优雅的解决方案
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 
 function validateUser(email, phone, idCard) {
   if (!rx.test('email', email)) return '邮箱格式错误';
@@ -422,7 +422,7 @@ parseLog(log);
 ### 统一正则规范
 ```javascript
 // src/main.js - 项目入口文件统一配置
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 
 // 团队统一正则标准
 rx.add('companyEmail', {
@@ -441,7 +441,7 @@ rx.test('companyEmail', 'john@company.com');  // true
 ### 环境配置
 ```javascript
 // src/main.js - 根据环境加载不同配置
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 
 // 开发环境：宽松验证
 const devConfig = {
@@ -483,7 +483,7 @@ rx.use(process.env.NODE_ENV === 'development' ? devConfig : prodConfig);
 
 ### Vue 3
 ```javascript
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 import { ref, computed } from 'vue';
 
 export function useValidation() {
@@ -499,7 +499,7 @@ export function useValidation() {
 
 ### React
 ```jsx
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 import { useState, useMemo } from 'react';
 
 function UserForm() {
@@ -536,9 +536,9 @@ MIT License
 
 ## 相关链接
 
-问题反馈和功能需求请提交 [Issue](https://github.com/SailingCoder/regex-pro/issues)
+问题反馈和功能需求请提交 [Issue](https://github.com/SailingCoder/regex-hub/issues)
 
-- [GitHub 仓库](https://github.com/SailingCoder/regex-pro)
-- [NPM 包页面](https://www.npmjs.com/package/regex-pro)
-- [内置正则大全 (100+)](https://github.com/SailingCoder/regex-pro/blob/main/docs/REGEX_REFERENCE.md)
-# regex-pro
+- [GitHub 仓库](https://github.com/SailingCoder/regex-hub)
+- [NPM 包页面](https://www.npmjs.com/package/regex-hub)
+- [内置正则大全 (100+)](https://github.com/SailingCoder/regex-hub/blob/main/docs/REGEX_REFERENCE.md)
+# regex-hub

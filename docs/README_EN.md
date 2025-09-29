@@ -1,6 +1,6 @@
 # Regex Kit
 
-[简体中文](https://github.com/SailingCoder/regex-pro/blob/main/README.md) | [English](https://github.com/SailingCoder/regex-pro/blob/main/docs/README_EN.md)
+[简体中文](https://github.com/SailingCoder/regex-hub/blob/main/README.md) | [English](https://github.com/SailingCoder/regex-hub/blob/main/docs/README_EN.md)
 
 **Regex Kit = Regex + Management**, A professional regex management library that makes team and project regexes manageable, maintainable, and reusable.
 
@@ -8,7 +8,7 @@
 - **Ready to Use**: Built-in 100+ curated regexes covering common scenarios
 - **Team Management**: Build your own regex management system and unify team standards
 
-[![npm version](https://badge.fury.io/js/regex-pro.svg)](https://badge.fury.io/js/regex-pro)
+[![npm version](https://badge.fury.io/js/regex-hub.svg)](https://badge.fury.io/js/regex-hub)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
@@ -27,13 +27,13 @@ When writing regexes, have you ever encountered these pain points?
 ### Installation
 
 ```bash
-npm install regex-pro
+npm install regex-hub
 ```
 
 ### Solution 1: Use Built-in Regexes Directly (Ready to Use)
 ```javascript
 // 100+ built-in curated regexes covering common scenarios
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 
 // Get and validate
 rx.get('email');                          // → /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -146,7 +146,7 @@ rx.use({
 | **Password** | `password:medium` | Medium strength password | `rx.test('password:medium', 'Password123')` |
 | | `password:strong` | Strong password | `rx.test('password:strong', 'Password123!')` |
 
-> **[Complete Built-in Regex Reference](https://github.com/SailingCoder/regex-pro/blob/main/docs/REGEX_REFERENCE_EN.md)** - View complete list of 100+ built-in regexes
+> **[Complete Built-in Regex Reference](https://github.com/SailingCoder/regex-hub/blob/main/docs/REGEX_REFERENCE_EN.md)** - View complete list of 100+ built-in regexes
 
 ### 2. Group Syntax for Unified Management
 ```javascript
@@ -173,7 +173,7 @@ rx.info('password').groups;  // ['weak', 'medium', 'strong']
 
 ### 3. Functional API (Optional)
 ```javascript
-import { get, test, info, extract, findAll, removeAll, add } from 'regex-pro';
+import { get, test, info, extract, findAll, removeAll, add } from 'regex-hub';
 
 // No rx prefix needed, more concise
 const emailRegex = get('email');
@@ -200,7 +200,7 @@ rx.highlight('phone:CN', text, '<mark>$&</mark>'); // Highlight
 
 ### 5. Batch Operations
 ```javascript
-import { extractBatch, replaceBatch, countBatch } from 'regex-pro/operations/batch';
+import { extractBatch, replaceBatch, countBatch } from 'regex-hub/operations/batch';
 
 const text = 'Contact: user@example.com, Phone: 13800138000, Website: https://example.com';
 
@@ -347,7 +347,7 @@ function validateUser(email, phone, idCard) {
 **Regex Kit**:
 ```javascript
 // Clean and elegant solution
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 
 function validateUser(email, phone, idCard) {
   if (!rx.test('email', email)) return 'Invalid email format';
@@ -422,7 +422,7 @@ parseLog(log);
 ### Unified Regex Standards
 ```javascript
 // src/main.js - Unified configuration in project entry file
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 
 // Team unified regex standards
 rx.add('companyEmail', {
@@ -441,7 +441,7 @@ rx.test('companyEmail', 'john@company.com');  // true
 ### Environment Configuration
 ```javascript
 // src/main.js - Load different configurations based on environment
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 
 // Development environment: loose validation
 const devConfig = {
@@ -483,7 +483,7 @@ rx.use(process.env.NODE_ENV === 'development' ? devConfig : prodConfig);
 
 ### Vue 3
 ```javascript
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 import { ref, computed } from 'vue';
 
 export function useValidation() {
@@ -499,7 +499,7 @@ export function useValidation() {
 
 ### React
 ```jsx
-import { rx } from 'regex-pro';
+import { rx } from 'regex-hub';
 import { useState, useMemo } from 'react';
 
 function UserForm() {
@@ -536,8 +536,8 @@ MIT License
 
 ## Links
 
-For issues and feature requests, please submit an [Issue](https://github.com/SailingCoder/regex-pro/issues)
+For issues and feature requests, please submit an [Issue](https://github.com/SailingCoder/regex-hub/issues)
 
-- [GitHub Repository](https://github.com/SailingCoder/regex-pro)
-- [NPM Package](https://www.npmjs.com/package/regex-pro)
-- [Complete Built-in Regex Reference (100+)](https://github.com/SailingCoder/regex-pro/blob/main/docs/REGEX_REFERENCE_EN.md)
+- [GitHub Repository](https://github.com/SailingCoder/regex-hub)
+- [NPM Package](https://www.npmjs.com/package/regex-hub)
+- [Complete Built-in Regex Reference (100+)](https://github.com/SailingCoder/regex-hub/blob/main/docs/REGEX_REFERENCE_EN.md)
