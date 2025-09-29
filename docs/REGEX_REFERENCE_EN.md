@@ -1,6 +1,6 @@
 # Regex Kit Built-in Regex Reference Manual
 
-[简体中文](https://github.com/SailingCoder/regex-kit/blob/main/docs/REGEX_REFERENCE.md) | [English](https://github.com/SailingCoder/regex-kit/blob/main/doc/REGEX_REFERENCE_EN.md)
+[简体中文](https://github.com/SailingCoder/regex-pro/blob/main/docs/REGEX_REFERENCE.md) | [English](https://github.com/SailingCoder/regex-pro/blob/main/doc/REGEX_REFERENCE_EN.md)
 
 This document provides a comprehensive collection of all built-in regular expressions in Regex Kit, organized by category for quick lookup and usage. It includes 14 category files and 113 major validation rules, covering 99.9% of everyday development scenarios. 
 
@@ -500,17 +500,17 @@ All expressions have been rigorously tested to ensure high accuracy and compatib
 ### 30-Second Quick Start
 
 ```bash
-npm install regex-kit
+npm install regex-pro
 ```
 
 **Verify Installation**:
 ```javascript
-import { rx } from 'regex-kit';
+import { rx } from 'regex-pro';
 console.log(rx.test('email', 'user@example.com')); // Should output: true
 ```
 
 ```javascript
-import { rx } from 'regex-kit';
+import { rx } from 'regex-pro';
 
 // Get and validate
 rx.get('email');                          // → /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -569,7 +569,7 @@ rx.use({
 
 ### Contact Information
 
-- **Issue Reports**: [GitHub Issues](https://github.com/SailingCoder/regex-kit/issues)
-- **Documentation**: [Official Documentation](https://github.com/SailingCoder/regex-kit)
+- **Issue Reports**: [GitHub Issues](https://github.com/SailingCoder/regex-pro/issues)
+- **Documentation**: [Official Documentation](https://github.com/SailingCoder/regex-pro)
 
-*This document covers all built-in regular expressions in Regex Kit. For the latest version, please visit the [official repository](https://github.com/SailingCoder/regex-kit).*
+*This document covers all built-in regular expressions in Regex Kit. For the latest version, please visit the [official repository](https://github.com/SailingCoder/regex-pro).*

@@ -68,8 +68,8 @@ export { loadBuiltinRegexes };
 
 // ============= 函数式API导出 =============
 // 用户可以选择两种方式：
-// 1. 实例方式：import { rx } from 'regex-kit'; rx.test(...)
-// 2. 函数方式：import { test, extract } from 'regex-kit'; test(...)
+// 1. 实例方式：import { rx } from 'regex-pro'; rx.test(...)
+// 2. 函数方式：import { test, extract } from 'regex-pro'; test(...)
 
 /**
  * 验证文本是否匹配正则类型

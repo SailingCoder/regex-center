@@ -1,5 +1,5 @@
 {
-  "name": "regex-kit",
+  "name": "regex-pro",
   "version": "1.0.0",
   "description": "专业的正则表达式管理库，内置100+精选正则，支持团队标准化和TypeScript。Professional regex management library with 100+ built-in patterns, team standardization, and TypeScript support.",
   "main": "dist/cjs/index.js",
@@ -78,12 +78,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SailingCoder/regex-kit.git"
+    "url": "git+https://github.com/SailingCoder/regex-pro.git"
   },
   "bugs": {
-    "url": "https://github.com/SailingCoder/regex-kit/issues"
+    "url": "https://github.com/SailingCoder/regex-pro/issues"
   },
-  "homepage": "https://github.com/SailingCoder/regex-kit#readme",
+  "homepage": "https://github.com/SailingCoder/regex-pro#readme",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
