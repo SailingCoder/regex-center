@@ -115,7 +115,7 @@ class TestSuite {
 }
 
 async function runAllTests() {
-  console.log('Regex Kit 测试套件');
+  console.log('Regex Pack 测试套件');
   console.log('==================');
   console.log(`开始时间: ${new Date().toLocaleString()}`);
   

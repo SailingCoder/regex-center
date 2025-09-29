@@ -1,8 +1,8 @@
-# Regex Kit
+# Regex Pack
 
 [简体中文](https://github.com/SailingCoder/regex-pack/blob/main/README.md) | [English](https://github.com/SailingCoder/regex-pack/blob/main/docs/README_EN.md)
 
-**Regex Kit = Regex + Management**, A professional regex management library that makes team and project regexes manageable, maintainable, and reusable.
+**Regex Pack = Regex + Management**, A professional regex management library that makes team and project regexes manageable, maintainable, and reusable.
 
 🎯 **Two Core Values**:
 - **Ready to Use**: Built-in 100+ curated regexes covering common scenarios
@@ -22,7 +22,7 @@ When writing regexes, have you ever encountered these pain points?
 -   **Team Inconsistency**: Everyone rewrites the same rules, standards are inconsistent
 -   **Security Risks**: Complex regexes can easily lead to ReDoS attacks
 
-## 🎯 Regex Kit Solution
+## 🎯 Regex Pack Solution
 
 ### Installation
 
@@ -73,7 +73,7 @@ rx.use({
   }
 });
 
-// Now only your defined regexes are available, leveraging Regex Kit's management capabilities
+// Now only your defined regexes are available, leveraging Regex Pack's management capabilities
 rx.get('email') // Get email regex /^[a-z0-9._%+-]+@company\.com$/
 rx.get('phone:mobile'); // Get /^1[3-9]\d{9}$/
 rx.test('email', 'user@company.com');     // true
@@ -123,7 +123,7 @@ rx.use({
     landline: /^0\d{2,3}-?\d{7,8}$/       // Landline
   }
 });
-// Now only these types are available, leveraging Regex Kit's management capabilities
+// Now only these types are available, leveraging Regex Pack's management capabilities
 ```
 
 **Common Built-in Regexes Overview**:
@@ -150,7 +150,7 @@ rx.use({
 
 ### 2. Group Syntax for Unified Management
 ```javascript
-// One type, multiple formats - this is Regex Kit's innovative design
+// One type, multiple formats - this is Regex Pack's innovative design
 
 // Password strength groups
 rx.test('password:weak', '123456');         // Weak password: numbers only
@@ -344,7 +344,7 @@ function validateUser(email, phone, idCard) {
 }
 ```
 
-**Regex Kit**:
+**Regex Pack**:
 ```javascript
 // Clean and elegant solution
 import { rx } from 'regex-pack';

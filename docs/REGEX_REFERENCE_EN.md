@@ -1,8 +1,8 @@
-# Regex Kit Built-in Regex Reference Manual
+# Regex Pack Built-in Regex Reference Manual
 
 [简体中文](https://github.com/SailingCoder/regex-pack/blob/main/docs/REGEX_REFERENCE.md) | [English](https://github.com/SailingCoder/regex-pack/blob/main/doc/REGEX_REFERENCE_EN.md)
 
-This document provides a comprehensive collection of all built-in regular expressions in Regex Kit, organized by category for quick lookup and usage. It includes 14 category files and 113 major validation rules, covering 99.9% of everyday development scenarios. 
+This document provides a comprehensive collection of all built-in regular expressions in Regex Pack, organized by category for quick lookup and usage. It includes 14 category files and 113 major validation rules, covering 99.9% of everyday development scenarios. 
 
 All expressions have been rigorously tested to ensure high accuracy and compatibility in production environments.
 
@@ -572,4 +572,4 @@ rx.use({
 - **Issue Reports**: [GitHub Issues](https://github.com/SailingCoder/regex-pack/issues)
 - **Documentation**: [Official Documentation](https://github.com/SailingCoder/regex-pack)
 
-*This document covers all built-in regular expressions in Regex Kit. For the latest version, please visit the [official repository](https://github.com/SailingCoder/regex-pack).*
+*This document covers all built-in regular expressions in Regex Pack. For the latest version, please visit the [official repository](https://github.com/SailingCoder/regex-pack).*

@@ -1,5 +1,5 @@
 /**
- * Regex Kit - 主入口文件
+ * Regex Pack - 主入口文件
  */
 
 import RegexKit from './core/api';

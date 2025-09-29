@@ -1,8 +1,8 @@
-# Regex Kit 内置正则参考手册
+# Regex Pack 内置正则参考手册
 
 [简体中文](https://github.com/SailingCoder/regex-pack/blob/main/doc/REGEX_REFERENCE.md) | [English](https://github.com/SailingCoder/regex-pack/blob/main/docs/REGEX_REFERENCE_EN.md)
 
-本文档汇总了 Regex Kit 内置的全部正则表达式，按类别分组，便于快速查找与使用。共涵盖 14 个分类文件、113 大类验证规则，几乎覆盖 99.9% 的日常开发场景。
+本文档汇总了 Regex Pack 内置的全部正则表达式，按类别分组，便于快速查找与使用。共涵盖 14 个分类文件、113 大类验证规则，几乎覆盖 99.9% 的日常开发场景。
 
 所有正则均经过严格测试，确保在生产环境中的高准确性与兼容性。
 
@@ -2422,4 +2422,4 @@ rx.use({
 - **问题反馈**: [GitHub Issues](https://github.com/SailingCoder/regex-pack/issues)
 - **详细文档**: [官方文档](https://github.com/SailingCoder/regex-pack)
 
-*本文档涵盖了Regex Kit中所有内置正则表达式。如需最新版本，请访问 [官方仓库](https://github.com/SailingCoder/regex-pack)。*
+*本文档涵盖了Regex Pack中所有内置正则表达式。如需最新版本，请访问 [官方仓库](https://github.com/SailingCoder/regex-pack)。*

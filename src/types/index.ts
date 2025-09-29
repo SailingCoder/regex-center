@@ -1,5 +1,5 @@
 /**
- * Regex Kit - 类型定义
+ * Regex Pack - 类型定义
  * 为整个库提供完整的 TypeScript 类型支持
  */
 
