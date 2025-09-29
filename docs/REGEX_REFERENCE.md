@@ -1,8 +1,8 @@
-# Regex Pack 内置正则参考手册
+# Regex Center 内置正则参考手册
 
-[简体中文](https://github.com/SailingCoder/regex-pack/blob/main/doc/REGEX_REFERENCE.md) | [English](https://github.com/SailingCoder/regex-pack/blob/main/docs/REGEX_REFERENCE_EN.md)
+[简体中文](https://github.com/SailingCoder/regex-center/blob/main/doc/REGEX_REFERENCE.md) | [English](https://github.com/SailingCoder/regex-center/blob/main/docs/REGEX_REFERENCE_EN.md)
 
-本文档汇总了 Regex Pack 内置的全部正则表达式，按类别分组，便于快速查找与使用。共涵盖 14 个分类文件、113 大类验证规则，几乎覆盖 99.9% 的日常开发场景。
+本文档汇总了 Regex Center 内置的全部正则表达式，按类别分组，便于快速查找与使用。共涵盖 14 个分类文件、113 大类验证规则，几乎覆盖 99.9% 的日常开发场景。
 
 所有正则均经过严格测试，确保在生产环境中的高准确性与兼容性。
 
@@ -2029,7 +2029,7 @@
 ### 基本用法
 
 ```javascript
-import { rx } from 'regex-pack';
+import { rx } from 'regex-center';
 
 // 使用基本类型（默认分组）
 rx.test('test@example.com', 'email');  // true
@@ -2350,17 +2350,17 @@ console.log(emailRegex);  // /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 ### 30秒上手
 
 ```bash
-npm install regex-pack
+npm install regex-center
 ```
 
 **快速验证安装**：
 ```javascript
-import { rx } from 'regex-pack';
+import { rx } from 'regex-center';
 console.log(rx.test('email', 'user@example.com')); // 应该输出: true
 ```
 
 ```javascript
-import { rx } from 'regex-pack';
+import { rx } from 'regex-center';
 
 // 获取和验证
 rx.get('email');                          // → /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -2419,7 +2419,7 @@ rx.use({
 
 ### 联系方式
 
-- **问题反馈**: [GitHub Issues](https://github.com/SailingCoder/regex-pack/issues)
-- **详细文档**: [官方文档](https://github.com/SailingCoder/regex-pack)
+- **问题反馈**: [GitHub Issues](https://github.com/SailingCoder/regex-center/issues)
+- **详细文档**: [官方文档](https://github.com/SailingCoder/regex-center)
 
-*本文档涵盖了Regex Pack中所有内置正则表达式。如需最新版本，请访问 [官方仓库](https://github.com/SailingCoder/regex-pack)。*
+*本文档涵盖了Regex Center中所有内置正则表达式。如需最新版本，请访问 [官方仓库](https://github.com/SailingCoder/regex-center)。*

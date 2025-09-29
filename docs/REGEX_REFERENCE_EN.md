@@ -1,8 +1,8 @@
-# Regex Pack Built-in Regex Reference Manual
+# Regex Center Built-in Regex Reference Manual
 
-[简体中文](https://github.com/SailingCoder/regex-pack/blob/main/docs/REGEX_REFERENCE.md) | [English](https://github.com/SailingCoder/regex-pack/blob/main/doc/REGEX_REFERENCE_EN.md)
+[简体中文](https://github.com/SailingCoder/regex-center/blob/main/docs/REGEX_REFERENCE.md) | [English](https://github.com/SailingCoder/regex-center/blob/main/doc/REGEX_REFERENCE_EN.md)
 
-This document provides a comprehensive collection of all built-in regular expressions in Regex Pack, organized by category for quick lookup and usage. It includes 14 category files and 113 major validation rules, covering 99.9% of everyday development scenarios. 
+This document provides a comprehensive collection of all built-in regular expressions in Regex Center, organized by category for quick lookup and usage. It includes 14 category files and 113 major validation rules, covering 99.9% of everyday development scenarios. 
 
 All expressions have been rigorously tested to ensure high accuracy and compatibility in production environments.
 
@@ -500,17 +500,17 @@ All expressions have been rigorously tested to ensure high accuracy and compatib
 ### 30-Second Quick Start
 
 ```bash
-npm install regex-pack
+npm install regex-center
 ```
 
 **Verify Installation**:
 ```javascript
-import { rx } from 'regex-pack';
+import { rx } from 'regex-center';
 console.log(rx.test('email', 'user@example.com')); // Should output: true
 ```
 
 ```javascript
-import { rx } from 'regex-pack';
+import { rx } from 'regex-center';
 
 // Get and validate
 rx.get('email');                          // → /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -569,7 +569,7 @@ rx.use({
 
 ### Contact Information
 
-- **Issue Reports**: [GitHub Issues](https://github.com/SailingCoder/regex-pack/issues)
-- **Documentation**: [Official Documentation](https://github.com/SailingCoder/regex-pack)
+- **Issue Reports**: [GitHub Issues](https://github.com/SailingCoder/regex-center/issues)
+- **Documentation**: [Official Documentation](https://github.com/SailingCoder/regex-center)
 
-*This document covers all built-in regular expressions in Regex Pack. For the latest version, please visit the [official repository](https://github.com/SailingCoder/regex-pack).*
+*This document covers all built-in regular expressions in Regex Center. For the latest version, please visit the [official repository](https://github.com/SailingCoder/regex-center).*

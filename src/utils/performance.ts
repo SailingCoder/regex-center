@@ -112,7 +112,7 @@ export class PerformanceMonitor {
       return 'Performance monitoring is disabled';
     }
 
-    let report = '=== Regex Pack Performance Report ===\n\n';
+    let report = '=== Regex Center Performance Report ===\n\n';
     
     if (this.stats.size === 0) {
       report += 'No performance data available\n';

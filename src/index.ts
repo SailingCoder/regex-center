@@ -1,5 +1,5 @@
 /**
- * Regex Pack - 主入口文件
+ * Regex Center - 主入口文件
  */
 
 import RegexKit from './core/api';
@@ -68,8 +68,8 @@ export { loadBuiltinRegexes };
 
 // ============= 函数式API导出 =============
 // 用户可以选择两种方式：
-// 1. 实例方式：import { rx } from 'regex-pack'; rx.test(...)
-// 2. 函数方式：import { test, extract } from 'regex-pack'; test(...)
+// 1. 实例方式：import { rx } from 'regex-center'; rx.test(...)
+// 2. 函数方式：import { test, extract } from 'regex-center'; test(...)
 
 /**
  * 验证文本是否匹配正则类型

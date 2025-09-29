@@ -1,14 +1,14 @@
-# Regex Pack
+# Regex Center
 
-[简体中文](https://github.com/SailingCoder/regex-pack/blob/main/README.md) | [English](https://github.com/SailingCoder/regex-pack/blob/main/docs/README_EN.md)
+[简体中文](https://github.com/SailingCoder/regex-center/blob/main/README.md) | [English](https://github.com/SailingCoder/regex-center/blob/main/docs/README_EN.md)
 
-**Regex Pack = Regex + Management**, A professional regex management library that makes team and project regexes manageable, maintainable, and reusable.
+**Regex Center = Regex + Management**, A professional regex management library that makes team and project regexes manageable, maintainable, and reusable.
 
 🎯 **Two Core Values**:
 - **Ready to Use**: Built-in 100+ curated regexes covering common scenarios
 - **Team Management**: Build your own regex management system and unify team standards
 
-[![npm version](https://badge.fury.io/js/regex-pack.svg)](https://badge.fury.io/js/regex-pack)
+[![npm version](https://badge.fury.io/js/regex-center.svg)](https://badge.fury.io/js/regex-center)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
@@ -22,18 +22,18 @@ When writing regexes, have you ever encountered these pain points?
 -   **Team Inconsistency**: Everyone rewrites the same rules, standards are inconsistent
 -   **Security Risks**: Complex regexes can easily lead to ReDoS attacks
 
-## 🎯 Regex Pack Solution
+## 🎯 Regex Center Solution
 
 ### Installation
 
 ```bash
-npm install regex-pack
+npm install regex-center
 ```
 
 ### Solution 1: Use Built-in Regexes Directly (Ready to Use)
 ```javascript
 // 100+ built-in curated regexes covering common scenarios
-import { rx } from 'regex-pack';
+import { rx } from 'regex-center';
 
 // Get and validate
 rx.get('email');                          // → /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -73,7 +73,7 @@ rx.use({
   }
 });
 
-// Now only your defined regexes are available, leveraging Regex Pack's management capabilities
+// Now only your defined regexes are available, leveraging Regex Center's management capabilities
 rx.get('email') // Get email regex /^[a-z0-9._%+-]+@company\.com$/
 rx.get('phone:mobile'); // Get /^1[3-9]\d{9}$/
 rx.test('email', 'user@company.com');     // true
@@ -123,7 +123,7 @@ rx.use({
     landline: /^0\d{2,3}-?\d{7,8}$/       // Landline
   }
 });
-// Now only these types are available, leveraging Regex Pack's management capabilities
+// Now only these types are available, leveraging Regex Center's management capabilities
 ```
 
 **Common Built-in Regexes Overview**:
@@ -146,11 +146,11 @@ rx.use({
 | **Password** | `password:medium` | Medium strength password | `rx.test('password:medium', 'Password123')` |
 | | `password:strong` | Strong password | `rx.test('password:strong', 'Password123!')` |
 
-> **[Complete Built-in Regex Reference](https://github.com/SailingCoder/regex-pack/blob/main/docs/REGEX_REFERENCE_EN.md)** - View complete list of 100+ built-in regexes
+> **[Complete Built-in Regex Reference](https://github.com/SailingCoder/regex-center/blob/main/docs/REGEX_REFERENCE_EN.md)** - View complete list of 100+ built-in regexes
 
 ### 2. Group Syntax for Unified Management
 ```javascript
-// One type, multiple formats - this is Regex Pack's innovative design
+// One type, multiple formats - this is Regex Center's innovative design
 
 // Password strength groups
 rx.test('password:weak', '123456');         // Weak password: numbers only
@@ -173,7 +173,7 @@ rx.info('password').groups;  // ['weak', 'medium', 'strong']
 
 ### 3. Functional API (Optional)
 ```javascript
-import { get, test, info, extract, findAll, removeAll, add } from 'regex-pack';
+import { get, test, info, extract, findAll, removeAll, add } from 'regex-center';
 
 // No rx prefix needed, more concise
 const emailRegex = get('email');
@@ -200,7 +200,7 @@ rx.highlight('phone:CN', text, '<mark>$&</mark>'); // Highlight
 
 ### 5. Batch Operations
 ```javascript
-import { extractBatch, replaceBatch, countBatch } from 'regex-pack/operations/batch';
+import { extractBatch, replaceBatch, countBatch } from 'regex-center/operations/batch';
 
 const text = 'Contact: user@example.com, Phone: 13800138000, Website: https://example.com';
 
@@ -344,10 +344,10 @@ function validateUser(email, phone, idCard) {
 }
 ```
 
-**Regex Pack**:
+**Regex Center**:
 ```javascript
 // Clean and elegant solution
-import { rx } from 'regex-pack';
+import { rx } from 'regex-center';
 
 function validateUser(email, phone, idCard) {
   if (!rx.test('email', email)) return 'Invalid email format';
@@ -422,7 +422,7 @@ parseLog(log);
 ### Unified Regex Standards
 ```javascript
 // src/main.js - Unified configuration in project entry file
-import { rx } from 'regex-pack';
+import { rx } from 'regex-center';
 
 // Team unified regex standards
 rx.add('companyEmail', {
@@ -441,7 +441,7 @@ rx.test('companyEmail', 'john@company.com');  // true
 ### Environment Configuration
 ```javascript
 // src/main.js - Load different configurations based on environment
-import { rx } from 'regex-pack';
+import { rx } from 'regex-center';
 
 // Development environment: loose validation
 const devConfig = {
@@ -483,7 +483,7 @@ rx.use(process.env.NODE_ENV === 'development' ? devConfig : prodConfig);
 
 ### Vue 3
 ```javascript
-import { rx } from 'regex-pack';
+import { rx } from 'regex-center';
 import { ref, computed } from 'vue';
 
 export function useValidation() {
@@ -499,7 +499,7 @@ export function useValidation() {
 
 ### React
 ```jsx
-import { rx } from 'regex-pack';
+import { rx } from 'regex-center';
 import { useState, useMemo } from 'react';
 
 function UserForm() {
@@ -536,8 +536,8 @@ MIT License
 
 ## Links
 
-For issues and feature requests, please submit an [Issue](https://github.com/SailingCoder/regex-pack/issues)
+For issues and feature requests, please submit an [Issue](https://github.com/SailingCoder/regex-center/issues)
 
-- [GitHub Repository](https://github.com/SailingCoder/regex-pack)
-- [NPM Package](https://www.npmjs.com/package/regex-pack)
-- [Complete Built-in Regex Reference (100+)](https://github.com/SailingCoder/regex-pack/blob/main/docs/REGEX_REFERENCE_EN.md)
+- [GitHub Repository](https://github.com/SailingCoder/regex-center)
+- [NPM Package](https://www.npmjs.com/package/regex-center)
+- [Complete Built-in Regex Reference (100+)](https://github.com/SailingCoder/regex-center/blob/main/docs/REGEX_REFERENCE_EN.md)
