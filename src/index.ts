@@ -324,7 +324,7 @@ export const countBatch = (
 export const version = '1.0.0';
 
 // 默认导出（兼容性）
-const regexKit = {
+const regexCenter = {
   rx,
   RegexCenter,
   loadBuiltinRegexes,
@@ -333,4 +333,4 @@ const regexKit = {
   version
 };
 
-export default regexKit;
+export default regexCenter;
