@@ -1,0 +1,103 @@
+{
+  "name": "regex-kit",
+  "version": "1.0.0",
+  "description": "专业的正则表达式管理库，内置100+精选正则，支持团队标准化和TypeScript。Professional regex management library with 100+ built-in patterns, team standardization, and TypeScript support.",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./operations/batch": {
+      "import": "./dist/esm/operations/batch.js",
+      "require": "./dist/cjs/operations/batch.js",
+      "types": "./dist/types/operations/batch.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "npm run clean && rollup -c",
+    "build:prod": "npm run clean && NODE_ENV=production rollup -c",
+    "clean": "rimraf dist",
+    "test": "node test/run-all-tests.js",
+    "test:core": "node test/core-api.test.js",
+    "test:operations": "node test/operations.test.js",
+    "test:batch": "node test/batch-operations.test.js",
+    "test:performance": "node test/performance.test.js",
+    "test:integration": "node test/integration.test.js",
+    "prepublishOnly": "npm run build:prod && npm run test",
+    "dev": "rollup -c --watch",
+    "size": "du -sh dist/ && echo 'ESM:' && du -sh dist/esm/ && echo 'CJS:' && du -sh dist/cjs/ && echo 'Types:' && du -sh dist/types/"
+  },
+  "keywords": [
+    "regex",
+    "validation",
+    "validator",
+    "regex-manager",
+    "kit",
+    "toolkit",
+    "regular-expression",
+    "data-validation",
+    "form-validation",
+    "pattern-matching",
+    "typescript",
+    "chinese",
+    "international",
+    "format",
+    "formatter",
+    "text-processing",
+    "data-cleaning",
+    "utility",
+    "vue",
+    "react",
+    "angular",
+    "framework-adapter",
+    "performance",
+    "security",
+    "redos-protection",
+    "chain-operations",
+    "batch-processing",
+    "modern-scenarios",
+    "kubernetes",
+    "docker",
+    "git",
+    "npm",
+    "cloud-native",
+    "microservices",
+    "devops"
+  ],
+  "author": "Regex Kit Team",
+  "license": "MIT",
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SailingCoder/regex-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SailingCoder/regex-kit/issues"
+  },
+  "homepage": "https://github.com/SailingCoder/regex-kit#readme",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.4",
+    "@types/node": "^20.19.17",
+    "rimraf": "^5.0.10",
+    "rollup": "^4.52.3",
+    "rollup-plugin-dts": "^6.2.3",
+    "terser": "^5.44.0",
+    "tslib": "^2.8.1",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}

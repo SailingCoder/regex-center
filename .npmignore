@@ -1,0 +1,28 @@
+# 开发相关文件
+src/
+docs/
+scripts/
+test/
+
+# 配置文件
+.gitignore
+.eslintrc*
+.prettierrc*
+tsconfig*.json
+
+# 测试相关
+*.test.js
+*.spec.js
+test-*.js
+
+# 构建工具
+.github/
+.vscode/
+.idea/
+
+# 临时文件
+*.log
+*.tmp
+.DS_Store
+node_modules/
+coverage/
