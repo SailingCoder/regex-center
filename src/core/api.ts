@@ -5,7 +5,7 @@
 
 import Registry from './registry';
 import { 
-  IRegexKit, 
+  IRegexCenter, 
   Registry as IRegistry,
   RegexPattern, 
   RegexGroupConfig,
@@ -15,7 +15,7 @@ import {
 import { RegexSecurityChecker } from '../utils/security';
 import { RegexChain, createChain, ChainOptions, ChainResult } from './chain-api';
 
-class RegexKit implements IRegexKit {
+class RegexCenter implements IRegexCenter {
   private registry: Registry;
   private securityEnabled: boolean = true; // 默认启用安全检查
 
@@ -503,4 +503,4 @@ class RegexKit implements IRegexKit {
 
 }
 
-export default RegexKit;
+export default RegexCenter;

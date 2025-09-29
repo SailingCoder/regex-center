@@ -2,10 +2,10 @@
  * Regex Center - 主入口文件
  */
 
-import RegexKit from './core/api';
+import RegexCenter from './core/api';
 import { loadBuiltinRegexes } from './utils/dataLoader';
 import { 
-  IRegexKit,
+  IRegexCenter,
   Registry,
   RegexPattern,
   TypeInfo,
@@ -34,7 +34,7 @@ export {
 } from './utils/security';
 
 // 创建全局实例
-const rx = new RegexKit();
+const rx = new RegexCenter();
 
 // 加载内置正则表达式
 try {
@@ -47,7 +47,7 @@ try {
 
 // 导出类型（用于TypeScript用户）
 export type {
-  IRegexKit,
+  IRegexCenter,
   Registry,
   RegexPattern,
   TypeInfo,
@@ -61,7 +61,7 @@ export {
 };
 
 // 导出主实例和类
-export { rx, RegexKit };
+export { rx, RegexCenter };
 
 // 导出工具函数
 export { loadBuiltinRegexes };
@@ -326,7 +326,7 @@ export const version = '1.0.0';
 // 默认导出（兼容性）
 const regexKit = {
   rx,
-  RegexKit,
+  RegexCenter,
   loadBuiltinRegexes,
   BuiltinTypes,
   CommonGroups,

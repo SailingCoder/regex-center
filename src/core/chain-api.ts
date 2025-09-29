@@ -11,7 +11,7 @@
  * - 类型安全的TypeScript支持
  */
 
-import RegexKit from './api';
+import RegexCenter from './api';
 
 // 链式操作结果接口
 export interface ChainResult {
@@ -42,9 +42,9 @@ export class RegexChain implements ChainResult {
   private _operations: string[] = [];
   private _originalLength: number;
   private _options: Required<ChainOptions>;
-  private _rx: RegexKit;
+  private _rx: RegexCenter;
 
-  constructor(text: string, rx: RegexKit, options: ChainOptions = {}) {
+  constructor(text: string, rx: RegexCenter, options: ChainOptions = {}) {
     this._text = text || '';
     this._originalLength = this._text.length;
     this._rx = rx;
@@ -353,13 +353,13 @@ export class RegexChain implements ChainResult {
 /**
  * 创建链式调用实例
  */
-export function createChain(text: string, rx: RegexKit, options?: ChainOptions): RegexChain {
+export function createChain(text: string, rx: RegexCenter, options?: ChainOptions): RegexChain {
   return new RegexChain(text, rx, options);
 }
 
 /**
  * 快捷链式调用函数
  */
-export function chain(text: string, rx: RegexKit, options?: ChainOptions): RegexChain {
+export function chain(text: string, rx: RegexCenter, options?: ChainOptions): RegexChain {
   return new RegexChain(text, rx, options);
 }

@@ -3,7 +3,7 @@
  * 为不同前端框架提供便捷的集成方式
  */
 
-import { IRegexKit } from '../types/index';
+import { IRegexCenter } from '../types/index';
 
 // ============= Vue 3 适配器 =============
 
@@ -22,15 +22,15 @@ export interface VueRegexComposable {
   
   /**
    * 表单验证器
-   * @param rx RegexKit实例
+   * @param rx RegexCenter实例
    */
-  createFormValidator: (rx: IRegexKit) => any;
+  createFormValidator: (rx: IRegexCenter) => any;
 }
 
 /**
  * 创建 Vue 3 适配器
  */
-export function createVueAdapter(rx: IRegexKit): VueRegexComposable {
+export function createVueAdapter(rx: IRegexCenter): VueRegexComposable {
   return {
     useValidation: (value: any, typeSpec: string) => {
       // 这里需要用户在Vue项目中自己导入ref, computed
@@ -42,7 +42,7 @@ export function createVueAdapter(rx: IRegexKit): VueRegexComposable {
     },
     
     
-    createFormValidator: (rxInstance: IRegexKit) => {
+    createFormValidator: (rxInstance: IRegexCenter) => {
       return {
         email: (value: string) => rxInstance.test('email', value) || 'Invalid email',
         phone: (value: string) => rxInstance.test('phone:CN', value) || 'Invalid phone number',
@@ -83,7 +83,7 @@ export interface ReactRegexHooks {
 /**
  * 创建 React 适配器
  */
-export function createReactAdapter(rx: IRegexKit): ReactRegexHooks {
+export function createReactAdapter(rx: IRegexCenter): ReactRegexHooks {
   return {
     useRegexValidation: (value: string, typeSpec: string) => {
       // 用户需要在React项目中使用useMemo等Hook
@@ -139,7 +139,7 @@ export interface AngularRegexService {
 /**
  * 创建 Angular 适配器
  */
-export function createAngularAdapter(rx: IRegexKit): AngularRegexService {
+export function createAngularAdapter(rx: IRegexCenter): AngularRegexService {
   return {
     createValidator: (typeSpec: string) => {
       return (control: any) => {
@@ -175,7 +175,7 @@ export function createAngularAdapter(rx: IRegexKit): AngularRegexService {
 /**
  * 创建表单验证规则
  */
-export function createValidationRules(rx: IRegexKit) {
+export function createValidationRules(rx: IRegexCenter) {
   return {
     email: {
       test: (value: string) => rx.test('email', value),
@@ -203,7 +203,7 @@ export function createValidationRules(rx: IRegexKit) {
 /**
  * 批量验证器
  */
-export function createBatchValidator(rx: IRegexKit) {
+export function createBatchValidator(rx: IRegexCenter) {
   return {
     validate: (data: Record<string, any>, rules: Record<string, string>) => {
       const errors: Record<string, string> = {};
@@ -226,7 +226,7 @@ export function createBatchValidator(rx: IRegexKit) {
 /**
  * 实时验证器（防抖）
  */
-export function createDebounceValidator(rx: IRegexKit, delay: number = 300) {
+export function createDebounceValidator(rx: IRegexCenter, delay: number = 300) {
   let timeoutId: NodeJS.Timeout | null = null;
   
   return {

@@ -103,7 +103,7 @@ export interface ConfigOptions {
  * 核心 API 接口
  * 定义所有公开方法的签名
  */
-export interface IRegexKit {
+export interface IRegexCenter {
   /**
    * 获取正则表达式
    * @param typeSpec 类型名称，支持 'type' 或 'type:group' 格式
