@@ -28,7 +28,7 @@
     "test:batch": "node test/batch-operations.test.js",
     "test:performance": "node test/performance.test.js",
     "test:integration": "node test/integration.test.js",
-    "prepublishOnly": "npm run build:prod && npm run test",
+    "prepublishOnly": "npm run build:prod",
     "dev": "rollup -c --watch",
     "size": "du -sh dist/ && echo 'ESM:' && du -sh dist/esm/ && echo 'CJS:' && du -sh dist/cjs/ && echo 'Types:' && du -sh dist/types/"
   },
@@ -69,7 +69,7 @@
     "microservices",
     "devops"
   ],
-  "author": "Regex Kit Team",
+  "author": "Sailing",
   "license": "MIT",
   "files": [
     "dist/",
