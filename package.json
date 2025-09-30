@@ -1,6 +1,6 @@
 {
   "name": "regex-center",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "专业的正则表达式管理库，内置100+精选正则，支持团队标准化和TypeScript。Professional regex management library with 100+ built-in patterns, team standardization, and TypeScript support.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
