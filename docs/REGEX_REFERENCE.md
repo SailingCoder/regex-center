@@ -218,9 +218,16 @@
 <tr>
 <td><code>ip:v4</code> 或 <code>ip</code></td>
 <td><code>/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/</code></td>
-<td>IPv4地址</td>
-<td><code>192.168.1.1</code>、<code>10.0.0.1</code>、<code>255.255.255.255</code>、<code>127.0.0.1</code>、<code>0.0.0.0</code></td>
+<td>IPv4地址（宽松模式，支持前导零）</td>
+<td><code>192.168.1.1</code>、<code>10.0.0.1</code>、<code>255.255.255.255</code>、<code>127.0.0.1</code>、<code>0.0.0.0</code>、<code>00.1.2.3</code>、<code>000.1.2.3</code></td>
 <td><code>192.168.1.256</code>、<code>10.0.0</code>、<code>192.168.1.1.1</code>、<code>abc.def.ghi.jkl</code>、<code>256.1.1.1</code>、<code>192.168.1</code></td>
+</tr>
+<tr>
+<td><code>ip:v4_strict</code></td>
+<td><code>/^((\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.){3}(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))$/</code></td>
+<td>IPv4地址（严格模式，不允许前导零）</td>
+<td><code>192.168.1.1</code>、<code>10.0.0.1</code>、<code>255.255.255.255</code>、<code>127.0.0.1</code>、<code>0.0.0.0</code></td>
+<td><code>192.168.1.256</code>、<code>10.0.0</code>、<code>192.168.1.1.1</code>、<code>abc.def.ghi.jkl</code>、<code>256.1.1.1</code>、<code>192.168.1</code>、<code>00.1.2.3</code>、<code>000.1.2.3</code>、<code>001.1.2.3</code></td>
 </tr>
 <tr>
 <td><code>ip:v6</code></td>
@@ -239,9 +246,16 @@
 <tr>
 <td><code>ip:cidr_v4</code></td>
 <td><code>/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/(3[0-2]|[12]?[0-9])$/</code></td>
-<td>IPv4 CIDR网络表示法</td>
-<td><code>192.168.1.0/24</code>、<code>10.0.0.0/8</code>、<code>172.16.0.0/16</code>、<code>0.0.0.0/0</code></td>
+<td>IPv4 CIDR网络表示法（宽松模式，支持前导零）</td>
+<td><code>192.168.1.0/24</code>、<code>10.0.0.0/8</code>、<code>172.16.0.0/16</code>、<code>0.0.0.0/0</code>、<code>00.1.2.3/24</code>、<code>000.1.2.3/8</code></td>
 <td><code>192.168.1.0/33</code>、<code>256.1.1.0/24</code>、<code>192.168.1.0</code>、<code>192.168.1.256/24</code></td>
+</tr>
+<tr>
+<td><code>ip:cidr_v4_strict</code></td>
+<td><code>/^((\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\.){3}(\d|[1-9]\d|1\d\d|2([0-4]\d|5[0-5]))\/(3[0-2]|[12]?[0-9])$/</code></td>
+<td>IPv4 CIDR网络表示法（严格模式，不允许前导零）</td>
+<td><code>192.168.1.0/24</code>、<code>10.0.0.0/8</code>、<code>172.16.0.0/16</code>、<code>0.0.0.0/0</code></td>
+<td><code>192.168.1.0/33</code>、<code>256.1.1.0/24</code>、<code>192.168.1.0</code>、<code>192.168.1.256/24</code>、<code>00.1.2.3/24</code>、<code>000.1.2.3/8</code>、<code>001.1.2.3/24</code></td>
 </tr>
 <tr>
 <td><code>ip:cidr_v6</code></td>
