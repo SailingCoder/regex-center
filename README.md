@@ -146,7 +146,8 @@ rx.use({
 | **密码** | `password:medium` | 中等强度密码 | `rx.test('password:medium', 'Password123')` |
 | | `password:strong` | 强密码 | `rx.test('password:strong', 'Password123!')` |
 
-> **[内置正则大全](https://github.com/SailingCoder/regex-center/blob/main/docs/REGEX_REFERENCE.md)** - 查看完整的100+种内置正则详细说明
+
+**[内置正则大全](https://github.com/SailingCoder/regex-center/blob/main/docs/REGEX_REFERENCE.md)** —— 收录 100+ 常用正则，点击查看完整说明
 
 ### 2. 分组语法，统一管理
 ```javascript
