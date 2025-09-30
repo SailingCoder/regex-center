@@ -20,23 +20,23 @@
 
 | 类型 | 语法 | 说明 | 示例 |
 |------|------|------|------|
-| **邮箱** | `email` | 基础邮箱格式 | `rx.test('email', 'user@example.com')` |
+| **邮箱** | `email:basic` 或 `email` | 基础邮箱格式 | `rx.test('email', 'user@example.com')` |
 | | `email:strict` | 严格邮箱格式 | `rx.test('email:strict', 'user@company.com')` |
 | | `email:enterprise` | 企业邮箱格式 | `rx.test('email:enterprise', 'admin@company.com')` |
-| **手机号** | `phone:CN` | 中国手机号 | `rx.test('phone:CN', '13800138000')` |
+| **手机号** | `phone:CN` 或 `phone` | 中国手机号 | `rx.test('phone:CN', '13800138000')` |
 | | `phone:US` | 美国手机号 | `rx.test('phone:US', '+1-555-123-4567')` |
-| **身份证** | `idCard:CN` | 中国身份证 | `rx.test('idCard:CN', '110101199003077777')` |
-| **银行卡** | `bankCard:CN` | 中国银行卡 | `rx.test('bankCard:CN', '6222600260001234567')` |
-| **URL** | `url` | 基础URL格式 | `rx.test('url', 'https://example.com')` |
-| **IP地址** | `ip:v4` | IPv4地址 | `rx.test('ip:v4', '192.168.1.1')` |
+| **身份证** | `idCard:CN` 或 `idCard` | 中国身份证 | `rx.test('idCard:CN', '110101199003077777')` |
+| **银行卡** | `bankCard:CN` 或 `bankCard` | 中国银行卡 | `rx.test('bankCard:CN', '6222600260001234567')` |
+| **URL** | `url:basic` 或 `url` | 基础URL格式 | `rx.test('url', 'https://example.com')` |
+| **IP地址** | `ip:v4` 或 `ip` | IPv4地址 | `rx.test('ip:v4', '192.168.1.1')` |
 | | `ip:v6` | IPv6地址 | `rx.test('ip:v6', '2001:db8::1')` |
-| **数字** | `number:integer` | 整数 | `rx.test('number:integer', '123')` |
+| **数字** | `number:integer` 或 `number` | 整数 | `rx.test('number:integer', '123')` |
 | | `number:decimal` | 小数 | `rx.test('number:decimal', '123.45')` |
-| **日期** | `date:YYYY-MM-DD` | 标准日期 | `rx.test('date:YYYY-MM-DD', '2024-01-01')` |
-| **密码** | `password:medium` | 中等强度密码 | `rx.test('password:medium', 'Password123')` |
+| **日期** | `date:YYYY-MM-DD` 或 `date` | 标准日期 | `rx.test('date:YYYY-MM-DD', '2024-01-01')` |
+| **密码** | `password:medium` 或 `password` | 中等强度密码 | `rx.test('password:medium', 'Password123')` |
 | | `password:strong` | 强密码 | `rx.test('password:strong', 'Password123!')` |
 
-> 💡 **提示**：所有正则都支持 `type:group` 语法，如 `phone:CN`、`email:enterprise`
+> 💡 **提示**：所有正则都支持 `type:group` 语法，如`rx.get('email')`、`rx.get('email:basic')`
 
 ## 基础验证 (Basic)
 
@@ -54,9 +54,9 @@
 </thead>
 <tbody>
 <tr>
-<td><code>email</code></td>
-<td><code>/^[^\s@]+@[^\s@]+\.[^\s@]+$/</code></td>
-<td>基础邮箱格式</td>
+<td><code>email:basic</code> 或 <code>email</code></td>
+<td><code>/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/</code></td>
+<td>基础邮箱格式（用户名允许字母、数字、._%+-，域名允许字母、数字、.-，顶级域名至少 2 个字母）</td>
 <td><code>test@example.com</code>、<code>user@domain.org</code>、<code>name123@site.co</code>、<code>user.name@test-domain.com</code></td>
 <td><code>invalid-email</code>、<code>user@</code>、<code>@domain.com</code>、<code>user space@domain.com</code>、<code>user@domain</code>、<code>user@@domain.com</code></td>
 </tr>
@@ -91,39 +91,39 @@
 </thead>
 <tbody>
 <tr>
-<td><code>phone</code></td>
+<td><code>phone:CN</code> 或 <code>phone</code></td>
 <td><code>/^1[3-9]\d{9}$/</code></td>
 <td>中国大陆手机号</td>
-<td><code>13800138000</code>、<code>15912345678</code>、<code>18888888888</code>、<code>17712345678</code></td>
-<td><code>12345678901</code>、<code>1380013800</code>、<code>138001380000</code>、<code>10800138000</code></td>
+<td><code>13800138000</code>、<code>15912345678</code>、<code>18888888888</code>、<code>17712345678</code>、<code>19912345678</code></td>
+<td><code>12345678901</code>、<code>1380013800</code>、<code>138001380000</code>、<code>10800138000</code>、<code>20800138000</code>、<code>1280013800</code></td>
 </tr>
 <tr>
 <td><code>phone:US</code></td>
 <td><code>/^\+1[2-9]\d{2}[2-9]\d{6}$/</code></td>
-<td>美国手机号</td>
-<td><code>+12345678900</code>、<code>+15551234567</code>、<code>+19876543210</code></td>
-<td><code>2345678900</code>、<code>+11234567890</code>、<code>+12345678</code>、<code>12345678900</code></td>
+<td>美国手机号（+1开头）</td>
+<td><code>+12345678900</code>、<code>+15551234567</code>、<code>+19876543210</code>、<code>+14155552671</code></td>
+<td><code>2345678900</code>、<code>+11234567890</code>、<code>+12345678</code>、<code>12345678900</code>、<code>+10234567890</code>、<code>+12045678900</code></td>
 </tr>
 <tr>
 <td><code>phone:UK</code></td>
 <td><code>/^\+44[1-9]\d{8,9}$/</code></td>
-<td>英国手机号</td>
-<td><code>+447123456789</code>、<code>+441234567890</code>、<code>+447987654321</code></td>
-<td><code>+4471234567</code>、<code>+440123456789</code>、<code>07123456789</code></td>
+<td>英国手机号（+44开头）</td>
+<td><code>+447123456789</code>、<code>+441234567890</code>、<code>+447987654321</code>、<code>+442012345678</code></td>
+<td><code>+4471234567</code>、<code>+440123456789</code>、<code>07123456789</code>、<code>+44012345678</code>、<code>+4471234567890</code></td>
 </tr>
 <tr>
 <td><code>phone:HK</code></td>
 <td><code>/^[569]\d{7}$/</code></td>
-<td>香港手机号</td>
-<td><code>51234567</code>、<code>61234567</code>、<code>91234567</code></td>
-<td><code>41234567</code>、<code>123456789</code>、<code>5123456</code></td>
+<td>香港手机号（8位数字，5/6/9开头）</td>
+<td><code>51234567</code>、<code>61234567</code>、<code>91234567</code>、<code>98765432</code></td>
+<td><code>41234567</code>、<code>123456789</code>、<code>5123456</code>、<code>71234567</code>、<code>81234567</code>、<code>012345678</code></td>
 </tr>
 <tr>
 <td><code>phone:TW</code></td>
 <td><code>/^09\d{8}$/</code></td>
-<td>台湾手机号</td>
-<td><code>0912345678</code>、<code>0987654321</code>、<code>0923456789</code></td>
-<td><code>12345678</code>、<code>091234567</code>、<code>09123456789</code></td>
+<td>台湾手机号（09开头10位）</td>
+<td><code>0912345678</code>、<code>0987654321</code>、<code>0923456789</code>、<code>0956789012</code></td>
+<td><code>12345678</code>、<code>091234567</code>、<code>09123456789</code>、<code>0812345678</code>、<code>1912345678</code></td>
 </tr>
 <tr>
 <td><code>phone:JP</code></td>
@@ -149,25 +149,25 @@
 </thead>
 <tbody>
 <tr>
-<td><code>url</code></td>
-<td><code>/^https?:\/\/.+/</code></td>
-<td>基础URL格式</td>
-<td><code>https://example.com</code>、<code>http://test.org/path</code>、<code>https://sub.domain.com/path?query=1</code></td>
-<td><code>example.com</code>、<code>ftp://site.com</code>、<code>https://</code>、<code>http://</code></td>
+<td><code>url:basic</code> 或 <code>url</code></td>
+<td><code>/^https?:\/\/[a-zA-Z0-9.-]+(?::[0-9]+)?(?:\/[a-zA-Z0-9._~:/?#[\]@!$&'()*+,;=-]*)?$/i</code></td>
+<td>基础URL格式（http/https）</td>
+<td><code>https://example.com</code>、<code>http://test.org/path</code>、<code>https://sub.domain.com/path?query=1</code>、<code>http://192.168.1.1:8080</code>、<code>https://www.example.com</code></td>
+<td><code>example.com</code>、<code>ftp://site.com</code>、<code>https://</code>、<code>http://</code>、<code>https://invalid space.com</code>、<code>http://.com</code>、<code>javascript:alert()</code></td>
 </tr>
 <tr>
 <td><code>url:strict</code></td>
-<td><code>/^https?:\/\/(?:[-\w.])+(?:\:[0-9]+)?(?:\/(?:[\w\/_.])*(?:\?(?:[\w&=%.])*)?(?:\#(?:[\w.])*)?)?$/</code></td>
+<td><code>/^https?:\/\/(?:[-\w.])+(?:\:[0-9]+)?(?:\/(?:[\w\/_.-])*(?:\?(?:[\w&=%.-])*)?(?:\#(?:[\w.-])*)?)?$/</code></td>
 <td>严格URL格式</td>
-<td><code>https://www.example.com/path</code>、<code>http://sub.domain.org:8080/api?id=1</code></td>
-<td><code>https://</code>、<code>http://invalid space.com</code>、<code>https://domain.</code></td>
+<td><code>https://www.example.com/path</code>、<code>http://sub.domain.org:8080/api?id=1</code>、<code>https://test.com/path#section</code></td>
+<td><code>https://</code>、<code>http://invalid space.com</code>、<code>https://domain.</code>、<code>http://domain..com</code>、<code>https://.domain.com</code></td>
 </tr>
 <tr>
 <td><code>url:ftp</code></td>
 <td><code>/^ftp:\/\/[\w\.-]+(?::\d+)?(?:\/.*)?$/</code></td>
 <td>FTP地址</td>
-<td><code>ftp://ftp.example.com</code>、<code>ftp://192.168.1.1:21/path</code></td>
-<td><code>http://example.com</code>、<code>ftp://</code>、<code>ftp://invalid space.com</code></td>
+<td><code>ftp://ftp.example.com</code>、<code>ftp://192.168.1.1:21/path</code>、<code>ftp://user@ftp.site.com/folder</code></td>
+<td><code>http://example.com</code>、<code>ftp://</code>、<code>ftp://invalid space.com</code>、<code>ftps://secure.com</code></td>
 </tr>
 </tbody>
 </table>
@@ -186,18 +186,18 @@
 </thead>
 <tbody>
 <tr>
-<td><code>domain</code></td>
+<td><code>domain:standard</code> 或 <code>domain</code></td>
 <td><code>/^(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$/</code></td>
 <td>标准域名格式</td>
-<td><code>example.com</code>、<code>sub.domain.org</code>、<code>test-site.co.uk</code>、<code>a.b.c.d</code></td>
-<td><code>example</code>、<code>example.</code>、<code>.example.com</code>、<code>example..com</code>、<code>-example.com</code></td>
+<td><code>example.com</code>、<code>sub.domain.org</code>、<code>test-site.co.uk</code>、<code>a.b.c.d</code>、<code>x.co</code></td>
+<td><code>example</code>、<code>example.</code>、<code>.example.com</code>、<code>example..com</code>、<code>-example.com</code>、<code>example-.com</code>、<code>example.c</code></td>
 </tr>
 <tr>
 <td><code>domain:subdomain</code></td>
 <td><code>/^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?\.)*[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?$/</code></td>
-<td>包含子域名</td>
-<td><code>www.example.com</code>、<code>api.sub.domain.org</code>、<code>cdn.site.co.uk</code></td>
-<td><code>example.com</code>、<code>sub.</code>、<code>.example.com</code>、<code>sub..domain.com</code></td>
+<td>包含子域名（至少二级域名）</td>
+<td><code>www.example.com</code>、<code>api.sub.domain.org</code>、<code>cdn.site.co.uk</code>、<code>mail.google.com</code></td>
+<td><code>example.com</code>、<code>sub.</code>、<code>.example.com</code>、<code>sub..domain.com</code>、<code>-sub.domain.com</code></td>
 </tr>
 </tbody>
 </table>
@@ -216,25 +216,25 @@
 </thead>
 <tbody>
 <tr>
-<td><code>ip</code></td>
+<td><code>ip:v4</code> 或 <code>ip</code></td>
 <td><code>/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/</code></td>
 <td>IPv4地址</td>
-<td><code>192.168.1.1</code>、<code>10.0.0.1</code>、<code>255.255.255.255</code>、<code>127.0.0.1</code></td>
-<td><code>192.168.1.256</code>、<code>10.0.0</code>、<code>192.168.1.1.1</code>、<code>abc.def.ghi.jkl</code></td>
+<td><code>192.168.1.1</code>、<code>10.0.0.1</code>、<code>255.255.255.255</code>、<code>127.0.0.1</code>、<code>0.0.0.0</code></td>
+<td><code>192.168.1.256</code>、<code>10.0.0</code>、<code>192.168.1.1.1</code>、<code>abc.def.ghi.jkl</code>、<code>256.1.1.1</code>、<code>192.168.1</code></td>
 </tr>
 <tr>
 <td><code>ip:v6</code></td>
-<td><code>/^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/</code></td>
-<td>IPv6地址</td>
-<td><code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>、<code>fe80:0000:0000:0000:0202:b3ff:fe1e:8329</code></td>
-<td><code>192.168.1.1</code>、<code>2001:0db8:85a3::8a2e:0370:7334:extra</code>、<code>invalid:ipv6</code></td>
+<td><code>/^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:)*::([0-9a-fA-F]{1,4}:)*[0-9a-fA-F]{1,4}?|::1|::)$/</code></td>
+<td>IPv6地址（支持完整和简化格式）</td>
+<td><code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>、<code>fe80::0202:b3ff:fe1e:8329</code>、<code>::1</code>、<code>::</code>、<code>2001:db8::1</code>、<code>2001:db8:85a3::8a2e:0370:7334</code></td>
+<td><code>192.168.1.1</code>、<code>2001:0db8:85a3::8a2e:0370:7334:extra</code>、<code>invalid:ipv6</code>、<code>2001:0db8:85a3:::8a2e</code>、<code>gggg::1</code></td>
 </tr>
 <tr>
 <td><code>ip:private_v4</code></td>
 <td><code>/^(10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.)/</code></td>
-<td>私有IPv4地址</td>
-<td><code>10.0.0.1</code>、<code>172.16.0.1</code>、<code>192.168.1.1</code>、<code>172.31.255.255</code></td>
-<td><code>8.8.8.8</code>、<code>172.15.0.1</code>、<code>192.167.1.1</code>、<code>11.0.0.1</code></td>
+<td>私有IPv4地址段</td>
+<td><code>10.0.0.1</code>、<code>172.16.0.1</code>、<code>192.168.1.1</code>、<code>172.31.255.255</code>、<code>10.255.255.255</code></td>
+<td><code>8.8.8.8</code>、<code>172.15.0.1</code>、<code>192.167.1.1</code>、<code>11.0.0.1</code>、<code>172.32.0.1</code>、<code>193.168.1.1</code></td>
 </tr>
 </tbody>
 </table>
@@ -253,18 +253,18 @@
 </thead>
 <tbody>
 <tr>
-<td><code>port</code></td>
+<td><code>port:standard</code> 或 <code>port</code></td>
 <td><code>/^([1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$/</code></td>
 <td>标准端口号(1-65535)</td>
-<td><code>80</code>、<code>443</code>、<code>8080</code>、<code>3000</code>、<code>65535</code></td>
-<td><code>0</code>、<code>65536</code>、<code>99999</code>、<code>abc</code>、<code></code></td>
+<td><code>80</code>、<code>443</code>、<code>8080</code>、<code>3000</code>、<code>65535</code>、<code>1</code>、<code>22</code>、<code>3306</code></td>
+<td><code>0</code>、<code>65536</code>、<code>99999</code>、<code>abc</code>、<code></code>、<code>-1</code>、<code>80.0</code>、<code>8080a</code></td>
 </tr>
 <tr>
 <td><code>port:well_known</code></td>
 <td><code>/^([1-9][0-9]{0,2}|10[0-1][0-9]|102[0-3])$/</code></td>
 <td>知名端口号(1-1023)</td>
-<td><code>21</code>、<code>22</code>、<code>23</code>、<code>25</code>、<code>53</code>、<code>80</code>、<code>110</code>、<code>143</code>、<code>443</code>、<code>993</code>、<code>995</code></td>
-<td><code>0</code>、<code>1024</code>、<code>8080</code>、<code>abc</code></td>
+<td><code>21</code>、<code>22</code>、<code>23</code>、<code>25</code>、<code>53</code>、<code>80</code>、<code>110</code>、<code>143</code>、<code>443</code>、<code>993</code>、<code>995</code>、<code>1023</code></td>
+<td><code>0</code>、<code>1024</code>、<code>8080</code>、<code>abc</code>、<code></code>、<code>65535</code>、<code>2000</code></td>
 </tr>
 </tbody>
 </table>
@@ -287,7 +287,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>idCard</code></td>
+<td><code>idCard:CN</code> 或 <code>idCard</code></td>
 <td><code>/^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/</code></td>
 <td>中国大陆身份证</td>
 <td><code>110101199003077777</code>、<code>44030119851201001X</code>、<code>330106198506061234</code>、<code>510107199512125678</code>、<code>210102199801011234</code></td>
@@ -324,7 +324,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>passport</code></td>
+<td><code>passport:CN</code> 或 <code>passport</code></td>
 <td><code>/^[a-zA-Z]\d{8}$/</code></td>
 <td>中国护照</td>
 <td><code>E12345678</code>、<code>G87654321</code>、<code>P11111111</code></td>
@@ -361,7 +361,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>username</code></td>
+<td><code>username:standard</code> 或 <code>username</code></td>
 <td><code>/^[a-zA-Z][a-zA-Z0-9_]{3,15}$/</code></td>
 <td>标准用户名</td>
 <td><code>user123</code>、<code>admin_user</code>、<code>testUser</code>、<code>a_b_c</code></td>
@@ -391,7 +391,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>driverLicense</code></td>
+<td><code>driverLicense:CN</code> 或 <code>driverLicense</code></td>
 <td><code>/^[1-9]\d{5}[1-9]\d{3}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[\dXx]$/</code></td>
 <td>中国驾驶证</td>
 <td><code>110101199003077777</code>、<code>44030119851201001X</code>、<code>330106198506061234</code></td>
@@ -425,7 +425,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>bankCard</code></td>
+<td><code>bankCard:CN</code> 或 <code>bankCard</code></td>
 <td><code>/^[3-6]\d{15,18}$/</code></td>
 <td>中国银行卡号</td>
 <td><code>6225757711234567</code>、<code>4367421234567890</code>、<code>3704123456789012</code>、<code>6212345678901234567</code>、<code>5555444433332222</code></td>
@@ -476,7 +476,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>creditCard</code></td>
+<td><code>creditCard:any</code> 或 <code>creditCard</code></td>
 <td><code>/^\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}$/</code></td>
 <td>通用信用卡格式</td>
 <td><code>1234567890123456</code>、<code>1234 5678 9012 3456</code>、<code>1234-5678-9012-3456</code></td>
@@ -506,7 +506,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>iban</code></td>
+<td><code>iban:standard</code> 或 <code>iban</code></td>
 <td><code>/^[A-Z]{2}\d{2}[A-Z0-9]{4,30}$/</code></td>
 <td>国际银行账号</td>
 <td><code>GB82WEST12345698765432</code>、<code>DE89370400440532013000</code>、<code>FR1420041010050500013M02606</code></td>
@@ -529,7 +529,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>swift</code></td>
+<td><code>swift:standard</code> 或 <code>swift</code></td>
 <td><code>/^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$/</code></td>
 <td>SWIFT代码</td>
 <td><code>DEUTDEFF</code>、<code>DEUTDEFF500</code>、<code>CHASUS33</code>、<code>MIDLGB22XXX</code></td>
@@ -552,7 +552,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>accountNumber</code></td>
+<td><code>accountNumber:CN</code> 或 <code>accountNumber</code></td>
 <td><code>/^\d{16,19}$/</code></td>
 <td>中国银行账号</td>
 <td><code>6225757711234567</code>、<code>622575771123456789</code>、<code>62257577112345678901</code></td>
@@ -582,7 +582,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>currencyAmount</code></td>
+<td><code>currencyAmount:general</code> 或 <code>currencyAmount</code></td>
 <td><code>/^\d{1,3}(,\d{3})*(\.\d{2})?$/</code></td>
 <td>通用货币金额格式（支持千分位）</td>
 <td><code>1,234.56</code>、<code>123,456</code>、<code>1,000,000.00</code>、<code>999.99</code></td>
@@ -596,11 +596,25 @@
 <td><code>$1234,56</code>、<code>¥1,23.45</code>、<code>€abc.123</code>、<code>#1,000.00</code></td>
 </tr>
 <tr>
-<td><code>stockPrice</code></td>
+<td><code>currencyAmount:chinese</code></td>
+<td><code>/^\d{1,3}(,\d{3})*(\.\d{2})?元$/</code></td>
+<td>中文货币格式（人民币）</td>
+<td><code>1,234.56元</code>、<code>123,456元</code>、<code>1,000,000.00元</code></td>
+<td><code>1234,56元</code>、<code>1,23.45元</code>、<code>1,000,000.000元</code></td>
+</tr>
+<tr>
+<td><code>stockPrice:standard</code> 或 <code>stockPrice</code></td>
 <td><code>/^\d+(\.\d{1,4})?$/</code></td>
 <td>股票价格格式（支持1-4位小数）</td>
 <td><code>123.45</code>、<code>1000</code>、<code>99.9999</code>、<code>0.01</code></td>
 <td><code>123.45678</code>、<code>-123.45</code>、<code>abc.123</code>、<code>123.</code></td>
+</tr>
+<tr>
+<td><code>stockPrice:withCurrency</code></td>
+<td><code>/^[¥$€£]\d+(\.\d{1,4})?$/</code></td>
+<td>带货币符号的股票价格</td>
+<td><code>$123.45</code>、<code>¥1000</code>、<code>€99.99</code>、<code>£0.01</code></td>
+<td><code>$-123.45</code>、<code>¥abc.123</code>、<code>€123.</code>、<code>#123.45</code></td>
 </tr>
 <tr>
 <td><code>cryptoAddress:bitcoin</code></td>
@@ -614,7 +628,7 @@
 <td><code>/^0x[a-fA-F0-9]{40}$/</code></td>
 <td>Ethereum地址格式</td>
 <td><code>0x742d35Cc6634C0532925a3b8D8Cc44Ce4Aa87C9D</code>、<code>0x0000000000000000000000000000000000000000</code></td>
-<td><code>0x742d35Cc6634C0532925a3b8D8Cc44Ce4Aa87C</code>、<code>742d35Cc6634C0532925a3b8D8Cc44Ce4Aa87C9D</code></td>
+<td><code>0x742d35Cc6634C0532925a3b8D8Cc44Ce4Aa87C</code>、<code>742d35Cc6634C0532925a3b8D8Cc44Ce4Aa87C9D</code>、<code>0xGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG</code></td>
 </tr>
 </tbody>
 </table>
@@ -637,7 +651,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>number</code></td>
+<td><code>number:integer</code> 或 <code>number</code></td>
 <td><code>/^-?\d+$/</code></td>
 <td>整数（包括负数）</td>
 <td><code>123</code>、<code>-456</code>、<code>0</code>、<code>999999</code></td>
@@ -695,7 +709,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>date</code></td>
+<td><code>date:YYYY-MM-DD</code> 或 <code>date</code></td>
 <td><code>/^\d{4}-((0[1-9])|(1[0-2]))-((0[1-9])|([1-2][0-9])|(3[0-1]))$/</code></td>
 <td>ISO标准日期格式</td>
 <td><code>2024-01-01</code>、<code>2023-12-31</code>、<code>2024-02-29</code></td>
@@ -739,7 +753,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>time</code></td>
+<td><code>time:24h</code> 或 <code>time</code></td>
 <td><code>/^([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$/</code></td>
 <td>24小时制时间格式</td>
 <td><code>12:30</code>、<code>23:59</code>、<code>00:00</code>、<code>12:30:45</code></td>
@@ -769,7 +783,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>color</code></td>
+<td><code>color:hex</code> 或 <code>color</code></td>
 <td><code>/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/</code></td>
 <td>十六进制颜色值</td>
 <td><code>#FF0000</code>、<code>#00ff00</code>、<code>#0000FF</code>、<code>#fff</code>、<code>#000</code></td>
@@ -797,7 +811,7 @@
 <td><code>hsl(361,100%,50%)</code>、<code>hsl(120,101%,50%)</code>、<code>hsl(120,100,50)</code></td>
 </tr>
 <tr>
-<td><code>hexColor</code></td>
+<td><code>hexColor:standard</code> 或 <code>hexColor</code></td>
 <td><code>/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/</code></td>
 <td>十六进制颜色值</td>
 <td><code>#FF0000</code>、<code>#00ff00</code>、<code>#0000FF</code>、<code>#fff</code>、<code>#000</code></td>
@@ -820,7 +834,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>coordinate</code></td>
+<td><code>coordinate:decimal</code> 或 <code>coordinate</code></td>
 <td><code>/^-?\d+(\.\d+)?,-?\d+(\.\d+)?$/</code></td>
 <td>十进制经纬度坐标</td>
 <td><code>40.7128,-74.0060</code>、<code>0,0</code>、<code>-90.0,180.0</code>、<code>39.9042,116.4074</code></td>
@@ -850,7 +864,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>fileExtension</code></td>
+<td><code>fileExtension:common</code> 或 <code>fileExtension</code></td>
 <td><code>/^\.(jpg|jpeg|png|gif|pdf|doc|docx|xls|xlsx|ppt|pptx|txt|zip|rar|mp4|mp3|avi)$/i</code></td>
 <td>常见文件扩展名</td>
 <td><code>.jpg</code>、<code>.PDF</code>、<code>.docx</code>、<code>.mp4</code>、<code>.txt</code>、<code>.zip</code></td>
@@ -864,7 +878,7 @@
 <td><code>.pdf</code>、<code>.doc</code>、<code>.mp4</code>、<code>.txt</code></td>
 </tr>
 <tr>
-<td><code>httpStatus</code></td>
+<td><code>httpStatus:standard</code> 或 <code>httpStatus</code></td>
 <td><code>/^[1-5]\d{2}$/</code></td>
 <td>HTTP状态码（100-599）</td>
 <td><code>200</code>、<code>404</code>、<code>500</code>、<code>301</code>、<code>403</code></td>
@@ -878,7 +892,7 @@
 <td><code>UTC+15</code>、<code>UTC-13</code>、<code>GMT+8</code>、<code>UTC+8:45</code></td>
 </tr>
 <tr>
-<td><code>languageCode</code></td>
+<td><code>languageCode:iso</code> 或 <code>languageCode</code></td>
 <td><code>/^[a-z]{2}(-[A-Z]{2})?$/</code></td>
 <td>ISO 639语言代码（可含国家代码）</td>
 <td><code>en</code>、<code>zh-CN</code>、<code>ja-JP</code>、<code>fr-FR</code>、<code>es</code></td>
@@ -901,14 +915,14 @@
 </thead>
 <tbody>
 <tr>
-<td><code>temperature</code></td>
+<td><code>temperature:celsius</code> 或 <code>temperature</code></td>
 <td><code>/^-?\d+(\.\d+)?°?C$/i</code></td>
 <td>温度格式</td>
 <td><code>25°C</code>、<code>-10.5°C</code>、<code>98.6°F</code>、<code>0°C</code></td>
 <td><code>25C</code>、<code>25°</code>、<code>25°K</code>、<code>abc°C</code></td>
 </tr>
 <tr>
-<td><code>measurement</code></td>
+<td><code>measurement:length</code> 或 <code>measurement</code></td>
 <td><code>/^\d+(\.\d+)?\s?(mm|cm|m|km|in|ft|yd|mi)$/</code></td>
 <td>长度测量单位</td>
 <td><code>10mm</code>、<code>5.5cm</code>、<code>100 m</code>、<code>1.5 km</code></td>
@@ -935,7 +949,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>businessLicense</code></td>
+<td><code>businessLicense:CN</code> 或 <code>businessLicense</code></td>
 <td><code>/^[0-9A-HJ-NPQRTUWXY]{2}\d{6}[0-9A-HJ-NPQRTUWXY]{10}$/</code></td>
 <td>中国营业执照号</td>
 <td><code>91110000000000000X</code>、<code>91110000000000001A</code>、<code>91110000000000002B</code>、<code>91110000000000003C</code></td>
@@ -958,7 +972,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>taxId</code></td>
+<td><code>taxId:CN</code> 或 <code>taxId</code></td>
 <td><code>/^[0-9A-HJ-NPQRTUWXY]{2}\d{6}[0-9A-HJ-NPQRTUWXY]{10}$/</code></td>
 <td>中国税务登记号</td>
 <td><code>91110000000000000X</code>、<code>91110000000000001A</code>、<code>91110000000000002B</code>、<code>91110000000000003C</code></td>
@@ -988,7 +1002,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>organizationCode</code></td>
+<td><code>organizationCode:CN</code> 或 <code>organizationCode</code></td>
 <td><code>/^[A-Z0-9]{8}-[A-Z0-9]$/</code></td>
 <td>中国组织机构代码</td>
 <td><code>12345678-X</code>、<code>ABCD1234-5</code></td>
@@ -1011,7 +1025,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>invoice</code></td>
+<td><code>invoice:CN</code> 或 <code>invoice</code></td>
 <td><code>/^\d{8,12}$/</code></td>
 <td>中国发票号码</td>
 <td><code>12345678</code>、<code>123456789012</code>、<code>987654321</code></td>
@@ -1034,7 +1048,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>companyName</code></td>
+<td><code>companyName:standard</code> 或 <code>companyName</code></td>
 <td><code>/^.{2,100}$/</code></td>
 <td>标准公司名称格式</td>
 <td><code>Apple Inc.</code>、<code>北京科技有限公司</code>、<code>Google LLC</code></td>
@@ -1064,7 +1078,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>stockCode</code></td>
+<td><code>stockCode:CN</code> 或 <code>stockCode</code></td>
 <td><code>/^(00|30|60|68)\d{4}$/</code></td>
 <td>中国股票代码</td>
 <td><code>000001</code>、<code>300001</code>、<code>600001</code>、<code>688001</code></td>
@@ -1101,7 +1115,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>employeeId</code></td>
+<td><code>employeeId:standard</code> 或 <code>employeeId</code></td>
 <td><code>/^EMP\d{6}$/</code></td>
 <td>标准员工工号：EMP + 6位数字</td>
 <td><code>EMP123456</code>、<code>EMP000001</code>、<code>EMP999999</code></td>
@@ -1135,28 +1149,28 @@
 </thead>
 <tbody>
 <tr>
-<td><code>qq</code></td>
+<td><code>qq:number</code> 或 <code>qq</code></td>
 <td><code>/^[1-9][0-9]{4,10}$/</code></td>
 <td>QQ号码</td>
 <td><code>12345</code>、<code>123456789</code>、<code>1234567890</code></td>
 <td><code>1234</code>、<code>01234567890</code>、<code>abc12345</code>、<code>12345678901</code></td>
 </tr>
 <tr>
-<td><code>wechat</code></td>
+<td><code>wechat:id</code> 或 <code>wechat</code></td>
 <td><code>/^[a-zA-Z][-_a-zA-Z0-9]{5,19}$/</code></td>
 <td>微信号</td>
 <td><code>wxid_abc123</code>、<code>user_name123</code>、<code>test-user</code></td>
 <td><code>123abc</code>、<code>a</code>、<code>user@name</code>、<code>user name</code></td>
 </tr>
 <tr>
-<td><code>weibo</code></td>
+<td><code>weibo:username</code> 或 <code>weibo</code></td>
 <td><code>/^[a-zA-Z0-9_-]{4,30}$/</code></td>
 <td>微博用户名</td>
 <td><code>user123</code>、<code>test_user</code>、<code>my-weibo</code></td>
 <td><code>usr</code>、<code>user@name</code>、<code>user name</code>、<code>123456789012345678901234567890123</code></td>
 </tr>
 <tr>
-<td><code>douyin</code></td>
+<td><code>douyin:id</code> 或 <code>douyin</code></td>
 <td><code>/^[a-zA-Z0-9._-]{1,24}$/</code></td>
 <td>抖音号</td>
 <td><code>user123</code>、<code>test.user</code>、<code>my_douyin</code>、<code>a</code></td>
@@ -1179,28 +1193,28 @@
 </thead>
 <tbody>
 <tr>
-<td><code>linkedin</code></td>
+<td><code>linkedin:profile</code> 或 <code>linkedin</code></td>
 <td><code>/^[a-zA-Z0-9-]{3,100}$/</code></td>
 <td>LinkedIn用户名</td>
 <td><code>john-doe</code>、<code>user123</code>、<code>my-profile</code></td>
 <td><code>jo</code>、<code>user_name</code>、<code>user@name</code>、<code>user.name</code></td>
 </tr>
 <tr>
-<td><code>twitter</code></td>
+<td><code>twitter:handle</code> 或 <code>twitter</code></td>
 <td><code>/^[a-zA-Z0-9_]{1,15}$/</code></td>
 <td>Twitter用户名</td>
 <td><code>user123</code>、<code>test_user</code>、<code>a</code></td>
 <td><code>user-name</code>、<code>user@name</code>、<code>1234567890123456</code></td>
 </tr>
 <tr>
-<td><code>instagram</code></td>
+<td><code>instagram:username</code> 或 <code>instagram</code></td>
 <td><code>/^[a-zA-Z0-9._]{1,30}$/</code></td>
 <td>Instagram用户名</td>
 <td><code>user123</code>、<code>test.user</code>、<code>my_insta</code></td>
 <td><code>user-name</code>、<code>user@name</code>、<code>1234567890123456789012345678901</code></td>
 </tr>
 <tr>
-<td><code>facebook</code></td>
+<td><code>facebook:username</code> 或 <code>facebook</code></td>
 <td><code>/^[a-zA-Z0-9.]{5,50}$/</code></td>
 <td>Facebook用户名</td>
 <td><code>john.doe</code>、<code>user123</code>、<code>test.user</code></td>
@@ -1223,7 +1237,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>youtube</code></td>
+<td><code>youtube:channel</code> 或 <code>youtube</code></td>
 <td><code>/^UC[a-zA-Z0-9_-]{22}$/</code></td>
 <td>YouTube频道ID</td>
 <td><code>UCuAXFkgsw1L7xaCfnd5JJOw</code>、<code>UC1234567890123456789012</code></td>
@@ -1253,7 +1267,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>github</code></td>
+<td><code>github:username</code> 或 <code>github</code></td>
 <td><code>/^[a-zA-Z0-9]([a-zA-Z0-9-]){0,38}$/</code></td>
 <td>GitHub用户名</td>
 <td><code>username</code>、<code>test-user</code>、<code>user123</code></td>
@@ -1287,7 +1301,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>version</code></td>
+<td><code>version:semver</code> 或 <code>version</code></td>
 <td><code>/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/</code></td>
 <td>语义化版本号（主版本.次版本.修订版本）</td>
 <td><code>1.0.0</code>、<code>2.1.3</code>、<code>1.0.0-alpha</code>、<code>1.0.0-alpha.1</code>、<code>1.0.0+20130313144700</code></td>
@@ -1317,7 +1331,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>uuid</code></td>
+<td><code>uuid:v4</code> 或 <code>uuid</code></td>
 <td><code>/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i</code></td>
 <td>UUID第4版（随机生成）</td>
 <td><code>550e8400-e29b-41d4-a716-446655440000</code>、<code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code></td>
@@ -1354,7 +1368,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>mac</code></td>
+<td><code>mac:address</code> 或 <code>mac</code></td>
 <td><code>/^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/</code></td>
 <td>MAC地址（冒号或连字符分隔）</td>
 <td><code>00:1B:44:11:3A:B7</code>、<code>00-1B-44-11-3A-B7</code>、<code>FF:FF:FF:FF:FF:FF</code></td>
@@ -1391,7 +1405,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>slug</code></td>
+<td><code>slug:url</code> 或 <code>slug</code></td>
 <td><code>/^[a-z0-9]+(?:-[a-z0-9]+)*$/</code></td>
 <td>URL slug格式（连字符分隔）</td>
 <td><code>hello-world</code>、<code>my-blog-post</code>、<code>test123</code></td>
@@ -1405,7 +1419,7 @@
 <td><code>Hello_World</code>、<code>hello-world</code>、<code>hello_world_</code>、<code>_hello_world</code></td>
 </tr>
 <tr>
-<td><code>filename</code></td>
+<td><code>filename:standard</code> 或 <code>filename</code></td>
 <td><code>/^[^<>:"/\\\\|?*\\x00-\\x1f]+$/</code></td>
 <td>标准文件名（禁止系统保留字符）</td>
 <td><code>document.pdf</code>、<code>my file.txt</code>、<code>测试文档.docx</code></td>
@@ -1419,63 +1433,63 @@
 <td><code>file name.txt</code>、<code>file@name.txt</code>、<code>文件.txt</code></td>
 </tr>
 <tr>
-<td><code>base64</code></td>
+<td><code>base64:standard</code> 或 <code>base64</code></td>
 <td><code>/^[A-Za-z0-9+/]*={0,2}$/</code></td>
 <td>Base64编码格式</td>
 <td><code>SGVsbG8gV29ybGQ=</code>、<code>dGVzdA==</code>、<code>YWJjZGVmZw</code></td>
 <td><code>SGVsbG8gV29ybGQ===</code>、<code>invalid base64!</code>、<code>SGVsbG8@V29ybGQ=</code></td>
 </tr>
 <tr>
-<td><code>json</code></td>
+<td><code>json:simple</code> 或 <code>json</code></td>
 <td><code>/^\s*[\[{].*[\]}]\s*$/s</code></td>
 <td>JSON格式验证</td>
 <td><code>{"key":"value"}</code>、<code>[1,2,3]</code>、<code>{"nested":{"data":true}}</code></td>
 <td><code>{key:value}</code>、<code>invalid json</code>、<code>{"key":"value",}</code></td>
 </tr>
 <tr>
-<td><code>htmlTag</code></td>
+<td><code>htmlTag:standard</code> 或 <code>htmlTag</code></td>
 <td><code>/^&lt;[a-zA-Z][a-zA-Z0-9]*\b[^&gt;]*&gt;.*?&lt;\/[a-zA-Z][a-zA-Z0-9]*&gt;$/s</code></td>
 <td>HTML标签格式</td>
 <td><code>&lt;div&gt;content&lt;/div&gt;</code>、<code>&lt;p class="text"&gt;hello&lt;/p&gt;</code></td>
 <td><code>&lt;div&gt;content</code>、<code>div&gt;content&lt;/div&gt;</code>、<code>&lt;123&gt;invalid&lt;/123&gt;</code></td>
 </tr>
 <tr>
-<td><code>xpath</code></td>
+<td><code>xpath:simple</code> 或 <code>xpath</code></td>
 <td><code>/^\/(?:[a-zA-Z_][\w-]*(?:\[[^\]]*\])?(?:\/[a-zA-Z_][\w-]*(?:\[[^\]]*\])?)*)?$/</code></td>
 <td>XPath表达式</td>
 <td><code>/html/body/div</code>、<code>//div[@class='content']</code>、<code>//*[@id='main']</code></td>
 <td><code>html/body/div</code>、<code>/html//body</code>、<code>/123invalid</code></td>
 </tr>
 <tr>
-<td><code>cssSelector</code></td>
+<td><code>cssSelector:simple</code> 或 <code>cssSelector</code></td>
 <td><code>/^[a-zA-Z#.][\w\s#.,:()[\]"'-]*$/</code></td>
 <td>CSS选择器</td>
 <td><code>.class</code>、<code>#id</code>、<code>div.class</code>、<code>input[type="text"]</code></td>
 <td><code>123invalid</code>、<code>.class{}</code>、<code>div &gt; p</code></td>
 </tr>
 <tr>
-<td><code>regex</code></td>
+<td><code>regex:simple</code> 或 <code>regex</code></td>
 <td><code>/^\/.*\/[gimuy]*$/</code></td>
 <td>正则表达式格式</td>
 <td><code>/test/gi</code>、<code>/[a-z]+/</code>、<code>/^hello$/i</code></td>
 <td><code>test</code>、<code>/test</code>、<code>test/</code>、<code>/test/xyz</code></td>
 </tr>
 <tr>
-<td><code>cronExpression</code></td>
+<td><code>cronExpression:standard</code> 或 <code>cronExpression</code></td>
 <td><code>/^(\*|[0-5]?\d)(\s+(\*|[0-5]?\d)){4}$/</code></td>
 <td>Cron表达式</td>
 <td><code>0 0 * * *</code>、<code>30 2 * * 1</code>、<code>0 */4 * * *</code></td>
 <td><code>0 0 * *</code>、<code>60 0 * * *</code>、<code>0 0 32 * *</code></td>
 </tr>
 <tr>
-<td><code>dockerImage</code></td>
+<td><code>dockerImage:name</code> 或 <code>dockerImage</code></td>
 <td><code>/^[a-z0-9]+(?:[._-][a-z0-9]+)*(?:\/[a-z0-9]+(?:[._-][a-z0-9]+)*)*(?::[a-zA-Z0-9._-]+)?$/</code></td>
 <td>Docker镜像名称</td>
 <td><code>nginx</code>、<code>node:16</code>、<code>registry.com/user/app:latest</code></td>
 <td><code>NGINX</code>、<code>node:</code>、<code>registry/user/app:</code></td>
 </tr>
 <tr>
-<td><code>sqlQuery</code></td>
+<td><code>sqlQuery:select</code> 或 <code>sqlQuery</code></td>
 <td><code>/^\s*(SELECT|INSERT|UPDATE|DELETE|CREATE|DROP|ALTER)\s+/i</code></td>
 <td>SQL查询语句</td>
 <td><code>SELECT * FROM users</code>、<code>INSERT INTO table VALUES</code>、<code>UPDATE users SET name</code></td>
@@ -1502,7 +1516,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>password</code></td>
+<td><code>password:basic</code> 或 <code>password</code></td>
 <td><code>/^.{6,}$/</code></td>
 <td>基本密码强度（至少6位）</td>
 <td><code>password123</code>、<code>myPass456</code>、<code>123456</code></td>
@@ -1546,7 +1560,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>apiKey</code></td>
+<td><code>apiKey:standard</code> 或 <code>apiKey</code></td>
 <td><code>/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i</code></td>
 <td>UUID格式API密钥</td>
 <td><code>550e8400-e29b-41d4-a716-446655440000</code>、<code>f47ac10b-58cc-4372-a567-0e02b2c3d479</code></td>
@@ -1583,7 +1597,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>token</code></td>
+<td><code>token:jwt</code> 或 <code>token</code></td>
 <td><code>/^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/</code></td>
 <td>JWT令牌格式（三部分结构）</td>
 <td><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code></td>
@@ -1613,7 +1627,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>hash</code></td>
+<td><code>hash:sha256</code> 或 <code>hash</code></td>
 <td><code>/^[a-f0-9]{32}$/i</code></td>
 <td>MD5哈希值（32位十六进制）</td>
 <td><code>5d41402abc4b2a76b9719d911017c592</code>、<code>098f6bcd4621d373cade4e832627b4f6</code></td>
@@ -1661,7 +1675,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>zipCode</code></td>
+<td><code>zipCode:CN</code> 或 <code>zipCode</code></td>
 <td><code>/^[1-9]\d{5}$/</code></td>
 <td>中国邮政编码</td>
 <td><code>100000</code>、<code>200000</code>、<code>518000</code></td>
@@ -1698,28 +1712,28 @@
 </thead>
 <tbody>
 <tr>
-<td><code>address</code></td>
+<td><code>address:standard</code> 或 <code>address</code></td>
 <td><code>/^.{5,100}$/</code></td>
 <td>地址格式</td>
 <td><code>北京市朝阳区建国路1号</code>、<code>123 Main St, New York</code></td>
 <td><code>短地址</code>、<code></code></td>
 </tr>
 <tr>
-<td><code>city</code></td>
+<td><code>city:name</code> 或 <code>city</code></td>
 <td><code>/^[a-zA-Z\u4e00-\u9fa5\s\-']{2,50}$/</code></td>
 <td>城市名称</td>
 <td><code>北京</code>、<code>New York</code>、<code>San Francisco</code>、<code>Xi'an</code></td>
 <td><code>A</code>、<code>City123</code>、<code>City@Name</code></td>
 </tr>
 <tr>
-<td><code>country</code></td>
+<td><code>country:name</code> 或 <code>country</code></td>
 <td><code>/^[A-Z]{2}$/</code></td>
 <td>国家代码（ISO 3166-1）</td>
 <td><code>CN</code>、<code>US</code>、<code>UK</code>、<code>JP</code></td>
 <td><code>cn</code>、<code>USA</code>、<code>CHN</code>、<code>123</code></td>
 </tr>
 <tr>
-<td><code>state</code></td>
+<td><code>state:name</code> 或 <code>state</code></td>
 <td><code>/^[a-zA-Z\u4e00-\u9fa5\s\-']{2,50}$/</code></td>
 <td>州/省份名称</td>
 <td><code>北京市</code>、<code>California</code>、<code>New York</code></td>
@@ -1746,7 +1760,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>imageUrl</code></td>
+<td><code>imageUrl:standard</code> 或 <code>imageUrl</code></td>
 <td><code>/^https?:\/\/.+\.(jpg|jpeg|png|gif|webp|svg)(\?.*)?$/i</code></td>
 <td>图片URL</td>
 <td><code>https://example.com/image.jpg</code>、<code>http://site.com/pic.png?v=1</code></td>
@@ -1769,7 +1783,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>audioUrl</code></td>
+<td><code>audioUrl:standard</code> 或 <code>audioUrl</code></td>
 <td><code>/^https?:\/\/.+\.(mp3|wav|ogg|m4a|aac|flac)(\?.*)?$/i</code></td>
 <td>音频URL</td>
 <td><code>https://example.com/music.mp3</code>、<code>http://site.com/sound.wav?v=1</code></td>
@@ -1792,14 +1806,14 @@
 </thead>
 <tbody>
 <tr>
-<td><code>videoUrl</code></td>
+<td><code>videoUrl:standard</code> 或 <code>videoUrl</code></td>
 <td><code>/^https?:\/\/.+\.(mp4|avi|mov|wmv|flv|webm|mkv)(\?.*)?$/i</code></td>
 <td>视频URL</td>
 <td><code>https://example.com/video.mp4</code>、<code>http://site.com/movie.avi?v=1</code></td>
 <td><code>https://example.com/video.txt</code>、<code>video.mp4</code>、<code>ftp://site.com/movie.avi</code></td>
 </tr>
 <tr>
-<td><code>videoId</code></td>
+<td><code>videoId:youtube</code> 或 <code>videoId</code></td>
 <td><code>/^[a-zA-Z0-9_-]{11}$/</code></td>
 <td>YouTube视频ID</td>
 <td><code>dQw4w9WgXcQ</code>、<code>jNQXAC9IVRw</code>、<code>9bZkp7q19f0</code></td>
@@ -1826,42 +1840,42 @@
 </thead>
 <tbody>
 <tr>
-<td><code>emoji</code></td>
+<td><code>emoji:unicode</code> 或 <code>emoji</code></td>
 <td><code>/[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{2B50}-\u{2B55}]/u</code></td>
 <td>Unicode表情符号</td>
 <td><code>😀</code>、<code>🎉</code>、<code>🚀</code>、<code>🇨🇳</code>、<code>⭐</code>、<code>✅</code></td>
 <td><code>abc</code>、<code>123</code>、<code>:)</code>、<code>(emoji)</code></td>
 </tr>
 <tr>
-<td><code>chineseChar</code></td>
+<td><code>chineseChar:standard</code> 或 <code>chineseChar</code></td>
 <td><code>/^[\u4e00-\u9fa5]+$/</code></td>
 <td>中文字符</td>
 <td><code>中文</code>、<code>汉字</code>、<code>测试</code>、<code>你好世界</code>、<code>北京大学</code></td>
 <td><code>Chinese</code>、<code>中文123</code>、<code>test中文</code>、<code>中文abc</code>、<code>你好world</code></td>
 </tr>
 <tr>
-<td><code>arabicChar</code></td>
+<td><code>arabicChar:standard</code> 或 <code>arabicChar</code></td>
 <td><code>/^[\u0600-\u06ff\u0750-\u077f\u08a0-\u08ff\ufb50-\ufdff\ufe70-\ufeff]+$/</code></td>
 <td>阿拉伯文字符</td>
 <td><code>العربية</code>、<code>مرحبا</code></td>
 <td><code>العربيةabc</code>、<code>123العربية</code>、<code>arabic</code></td>
 </tr>
 <tr>
-<td><code>japaneseChar</code></td>
+<td><code>japaneseChar:standard</code> 或 <code>japaneseChar</code></td>
 <td><code>/^[\u3040-\u309f\u30a0-\u30ff\u4e00-\u9faf]+$/</code></td>
 <td>日文字符</td>
 <td><code>ひらがな</code>、<code>カタカナ</code>、<code>漢字</code></td>
 <td><code>ひらがなabc</code>、<code>123ひらがな</code>、<code>japanese</code></td>
 </tr>
 <tr>
-<td><code>koreanChar</code></td>
+<td><code>koreanChar:standard</code> 或 <code>koreanChar</code></td>
 <td><code>/^[\uac00-\ud7af]+$/</code></td>
 <td>韩文字符</td>
 <td><code>한글</code>、<code>안녕하세요</code></td>
 <td><code>한글abc</code>、<code>123한글</code>、<code>korean</code></td>
 </tr>
 <tr>
-<td><code>russianChar</code></td>
+<td><code>russianChar:standard</code> 或 <code>russianChar</code></td>
 <td><code>/^[\u0400-\u04ff]+$/</code></td>
 <td>俄文字符</td>
 <td><code>русский</code>、<code>привет</code></td>
@@ -1884,35 +1898,35 @@
 </thead>
 <tbody>
 <tr>
-<td><code>barcode</code></td>
+<td><code>barcode:standard</code> 或 <code>barcode</code></td>
 <td><code>/^\d{8,14}$/</code></td>
 <td>条形码</td>
 <td><code>12345678</code>、<code>1234567890123</code></td>
 <td><code>1234567</code>、<code>123456789012345</code>、<code>abc12345678</code></td>
 </tr>
 <tr>
-<td><code>isbn</code></td>
+<td><code>isbn:standard</code> 或 <code>isbn</code></td>
 <td><code>/^(97[89])?\d{9}[\dX]$/</code></td>
 <td>ISBN书号</td>
 <td><code>9787111547426</code>、<code>123456789X</code>、<code>1234567890</code></td>
 <td><code>123456789</code>、<code>97812345678901</code>、<code>abc123456789</code></td>
 </tr>
 <tr>
-<td><code>imei</code></td>
+<td><code>imei:standard</code> 或 <code>imei</code></td>
 <td><code>/^\d{15}$/</code></td>
 <td>手机IMEI号</td>
 <td><code>123456789012345</code>、<code>987654321098765</code></td>
 <td><code>12345678901234</code>、<code>1234567890123456</code>、<code>abc123456789012</code></td>
 </tr>
 <tr>
-<td><code>license</code></td>
+<td><code>license:plate</code> 或 <code>license</code></td>
 <td><code>/^[A-Z0-9]{8,32}$/</code></td>
 <td>许可证号</td>
 <td><code>ABC12345</code>、<code>LICENSE123456789</code></td>
 <td><code>abc123</code>、<code>LICENSE@123</code>、<code>AB</code></td>
 </tr>
 <tr>
-<td><code>lottery</code></td>
+<td><code>lottery:number</code> 或 <code>lottery</code></td>
 <td><code>/^\d{2}\+\d{2}$/</code></td>
 <td>彩票号码</td>
 <td><code>01+02</code>、<code>35+12</code>、<code>07+01</code></td>
@@ -1939,14 +1953,14 @@
 </thead>
 <tbody>
 <tr>
-<td><code>flightNumber</code></td>
+<td><code>flightNumber:standard</code> 或 <code>flightNumber</code></td>
 <td><code>/^[A-Z]{2}\d{1,4}[A-Z]?$/</code></td>
 <td>航班号</td>
 <td><code>CA1234</code>、<code>MU123</code>、<code>AA1234A</code></td>
 <td><code>ca1234</code>、<code>C1234</code>、<code>CA12345</code>、<code>123CA</code></td>
 </tr>
 <tr>
-<td><code>airportCode</code></td>
+<td><code>airportCode:iata</code> 或 <code>airportCode</code></td>
 <td><code>/^[A-Z]{3}$/</code></td>
 <td>机场代码</td>
 <td><code>PEK</code>、<code>LAX</code>、<code>JFK</code>、<code>CDG</code></td>
@@ -1969,7 +1983,7 @@
 </thead>
 <tbody>
 <tr>
-<td><code>trainNumber</code></td>
+<td><code>trainNumber:CN</code> 或 <code>trainNumber</code></td>
 <td><code>/^[GCDZTYKL]\d{1,4}$/</code></td>
 <td>中国火车车次</td>
 <td><code>G123</code>、<code>D1234</code>、<code>T12</code>、<code>K9999</code></td>
@@ -1992,28 +2006,28 @@
 </thead>
 <tbody>
 <tr>
-<td><code>trackingNumber</code></td>
+<td><code>trackingNumber:standard</code> 或 <code>trackingNumber</code></td>
 <td><code>/^[A-Z]{2}\d{9}[A-Z]{2}$/</code></td>
 <td>快递单号</td>
 <td><code>SF1234567890AB</code>、<code>YT9876543210CD</code></td>
 <td><code>sf1234567890ab</code>、<code>SF123456789AB</code>、<code>SF1234567890ABC</code></td>
 </tr>
 <tr>
-<td><code>containerNumber</code></td>
+<td><code>containerNumber:iso</code> 或 <code>containerNumber</code></td>
 <td><code>/^[A-Z]{4}\d{7}$/</code></td>
 <td>集装箱号</td>
 <td><code>ABCD1234567</code>、<code>MSCU1234567</code></td>
 <td><code>abcd1234567</code>、<code>ABC1234567</code>、<code>ABCD12345678</code></td>
 </tr>
 <tr>
-<td><code>vehicleVin</code></td>
+<td><code>vehicleVin:standard</code> 或 <code>vehicleVin</code></td>
 <td><code>/^[A-HJ-NPR-Z0-9]{17}$/</code></td>
 <td>车辆识别码（VIN）</td>
 <td><code>1HGBH41JXMN109186</code>、<code>JH4TB2H26CC000000</code></td>
 <td><code>1hgbh41jxmn109186</code>、<code>1HGBH41JXMN10918</code>、<code>1HGBH41JXMN1091861</code></td>
 </tr>
 <tr>
-<td><code>shipImo</code></td>
+<td><code>shipImo:number</code> 或 <code>shipImo</code></td>
 <td><code>/^IMO\d{7}$/</code></td>
 <td>船舶IMO号</td>
 <td><code>IMO1234567</code>、<code>IMO9876543</code></td>
@@ -2073,7 +2087,7 @@ console.log(emailRegex);  // /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 </thead>
 <tbody>
 <tr>
-<td><code>kubernetesResource</code></td>
+<td><code>kubernetesResource:name</code> 或 <code>kubernetesResource</code></td>
 <td><code>/^[a-z0-9]([-a-z0-9]*[a-z0-9])?$/</code></td>
 <td>Kubernetes资源名称（Pod、Service等）</td>
 <td><code>my-pod</code>、<code>web-service</code>、<code>app-123</code>、<code>nginx</code></td>
@@ -2110,7 +2124,7 @@ console.log(emailRegex);  // /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 </thead>
 <tbody>
 <tr>
-<td><code>dockerContainerId</code></td>
+<td><code>dockerContainerId:standard</code> 或 <code>dockerContainerId</code></td>
 <td><code>/^[a-f0-9]{64}$/</code></td>
 <td>完整Docker容器ID（64位十六进制）</td>
 <td><code>a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456</code></td>
@@ -2140,7 +2154,7 @@ console.log(emailRegex);  // /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 </thead>
 <tbody>
 <tr>
-<td><code>gitCommitHash</code></td>
+<td><code>gitCommitHash:full</code> 或 <code>gitCommitHash</code></td>
 <td><code>/^[a-f0-9]{40}$/</code></td>
 <td>完整Git提交哈希（40位十六进制）</td>
 <td><code>a1b2c3d4e5f6789012345678901234567890abcd</code></td>
@@ -2154,7 +2168,7 @@ console.log(emailRegex);  // /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 <td><code>a1b2c3</code>、<code>A1B2C3D</code>、<code>g1b2c3d</code></td>
 </tr>
 <tr>
-<td><code>gitBranch</code></td>
+<td><code>gitBranch:name</code> 或 <code>gitBranch</code></td>
 <td><code>/^[a-zA-Z0-9]([a-zA-Z0-9._/-]*[a-zA-Z0-9])?$/</code></td>
 <td>Git分支名称</td>
 <td><code>main</code>、<code>develop</code>、<code>feature/user-auth</code>、<code>release/v1.0.0</code></td>
@@ -2177,14 +2191,14 @@ console.log(emailRegex);  // /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 </thead>
 <tbody>
 <tr>
-<td><code>npmPackage</code></td>
+<td><code>npmPackage:name</code> 或 <code>npmPackage</code></td>
 <td><code>/^(@[a-z0-9-~][a-z0-9-._~]*\/)?[a-z0-9-~][a-z0-9-._~]*$/</code></td>
 <td>NPM包名称（支持作用域）</td>
 <td><code>react</code>、<code>lodash</code>、<code>@types/node</code>、<code>@babel/core</code></td>
 <td><code>React</code>、<code>LODASH</code>、<code>@Types/node</code>、<code>-package</code></td>
 </tr>
 <tr>
-<td><code>pythonPackage</code></td>
+<td><code>pythonPackage:name</code> 或 <code>pythonPackage</code></td>
 <td><code>/^[a-zA-Z][a-zA-Z0-9_-]*[a-zA-Z0-9]$|^[a-zA-Z]$/</code></td>
 <td>Python包名称（PyPI规范）</td>
 <td><code>django</code>、<code>requests</code>、<code>scikit-learn</code>、<code>Flask</code></td>
@@ -2207,21 +2221,21 @@ console.log(emailRegex);  // /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 </thead>
 <tbody>
 <tr>
-<td><code>ipv6</code></td>
+<td><code>ipv6:standard</code> 或 <code>ipv6</code></td>
 <td><code>/^(([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}|...)$/</code></td>
 <td>IPv6地址格式</td>
 <td><code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>、<code>::1</code></td>
 <td><code>2001:0db8:85a3::8a2e::7334</code>、<code>invalid:ipv6</code></td>
 </tr>
 <tr>
-<td><code>cidr</code></td>
+<td><code>cidr:notation</code> 或 <code>cidr</code></td>
 <td><code>/^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}\/(3[0-2]|[1-2]?[0-9])$/</code></td>
 <td>IPv4 CIDR网络表示法</td>
 <td><code>192.168.1.0/24</code>、<code>10.0.0.0/8</code>、<code>172.16.0.0/16</code></td>
 <td><code>192.168.1.0/33</code>、<code>256.1.1.0/24</code>、<code>192.168.1.0</code></td>
 </tr>
 <tr>
-<td><code>websocketUrl</code></td>
+<td><code>websocketUrl:standard</code> 或 <code>websocketUrl</code></td>
 <td><code>/^wss?:\/\/[a-zA-Z0-9.-]+(?::[0-9]+)?(?:\/[^\s]*)?$/</code></td>
 <td>WebSocket URL格式</td>
 <td><code>ws://localhost:8080</code>、<code>wss://example.com/socket</code></td>
@@ -2244,7 +2258,7 @@ console.log(emailRegex);  // /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 </thead>
 <tbody>
 <tr>
-<td><code>mongoObjectId</code></td>
+<td><code>mongoObjectId:standard</code> 或 <code>mongoObjectId</code></td>
 <td><code>/^[0-9a-fA-F]{24}$/</code></td>
 <td>MongoDB ObjectId（24位十六进制）</td>
 <td><code>507f1f77bcf86cd799439011</code>、<code>507f191e810c19729de860ea</code></td>
@@ -2267,7 +2281,7 @@ console.log(emailRegex);  // /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 </thead>
 <tbody>
 <tr>
-<td><code>awsArn</code></td>
+<td><code>awsArn:standard</code> 或 <code>awsArn</code></td>
 <td><code>/^arn:aws:[a-zA-Z0-9-]+:[a-zA-Z0-9-]*:[0-9]{12}:[a-zA-Z0-9-_\/:.]+$/</code></td>
 <td>AWS ARN (Amazon Resource Name)</td>
 <td><code>arn:aws:s3:::my-bucket/my-key</code>、<code>arn:aws:iam::123456789012:user/username</code></td>
@@ -2290,21 +2304,21 @@ console.log(emailRegex);  // /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 </thead>
 <tbody>
 <tr>
-<td><code>graphqlQuery</code></td>
+<td><code>graphqlQuery:simple</code> 或 <code>graphqlQuery</code></td>
 <td><code>/^(query|mutation|subscription)\s+[a-zA-Z][a-zA-Z0-9_]*\s*(\([^)]*\))?\s*\{[\s\S]*\}$/</code></td>
 <td>基本GraphQL查询格式</td>
 <td><code>query GetUser { user { id name } }</code></td>
 <td><code>{ user { id } }</code>、<code>query { }</code>、<code>invalid query</code></td>
 </tr>
 <tr>
-<td><code>mimeType</code></td>
+<td><code>mimeType:standard</code> 或 <code>mimeType</code></td>
 <td><code>/^[a-zA-Z][a-zA-Z0-9][a-zA-Z0-9!#$&\-\^]*\/[a-zA-Z0-9][a-zA-Z0-9!#$&\-\^]*$/</code></td>
 <td>MIME类型格式</td>
 <td><code>text/html</code>、<code>application/json</code>、<code>image/png</code></td>
 <td><code>text/</code>、<code>/html</code>、<code>text</code>、<code>text/html/extra</code></td>
 </tr>
 <tr>
-<td><code>jsonPath</code></td>
+<td><code>jsonPath:simple</code> 或 <code>jsonPath</code></td>
 <td><code>/^\$(\.[a-zA-Z_][a-zA-Z0-9_]*|\[[0-9]+\]|\[\*\]|\[['"][^'"]*['"]\])*$/</code></td>
 <td>JSON Path表达式</td>
 <td><code>$.user.name</code>、<code>$[0].id</code>、<code>$.users[*].email</code></td>
@@ -2327,14 +2341,14 @@ console.log(emailRegex);  // /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 </thead>
 <tbody>
 <tr>
-<td><code>internationalDomain</code></td>
+<td><code>internationalDomain:idn</code> 或 <code>internationalDomain</code></td>
 <td><code>/^[a-zA-Z0-9\u00a1-\uffff]([a-zA-Z0-9\u00a1-\uffff-]{0,61}[a-zA-Z0-9\u00a1-\uffff])?(\.[a-zA-Z0-9\u00a1-\uffff]([a-zA-Z0-9\u00a1-\uffff-]{0,61}[a-zA-Z0-9\u00a1-\uffff])?)*$/</code></td>
 <td>国际化域名（支持Unicode字符）</td>
 <td><code>example.com</code>、<code>测试.中国</code>、<code>пример.рф</code>、<code>テスト.日本</code></td>
 <td><code>-example.com</code>、<code>example-.com</code>、<code>.example.com</code></td>
 </tr>
 <tr>
-<td><code>emoji</code></td>
+<td><code>emoji:unicode</code> 或 <code>emoji</code></td>
 <td><code>/[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{2B50}-\u{2B55}]/u</code></td>
 <td>Emoji表情符号</td>
 <td><code>😀</code>、<code>🎉</code>、<code>🚀</code>、<code>🇺🇸</code>、<code>⭐</code>、<code>✨</code></td>

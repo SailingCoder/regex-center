@@ -130,7 +130,7 @@ rx.use({
 **常用内置正则一览**：
 | 类型 | 语法 | 说明 | 示例 |
 |------|------|------|------|
-| **邮箱** | `email` | 基础邮箱格式 | `rx.test('email', 'user@example.com')` |
+| **邮箱** | `email` / `email:basic` | 基础邮箱格式（默认值） | `rx.test('email', 'user@example.com')` |
 | | `email:strict` | 严格邮箱格式 | `rx.test('email:strict', 'user@company.com')` |
 | | `email:enterprise` | 企业邮箱格式 | `rx.test('email:enterprise', 'admin@company.com')` |
 | **手机号** | `phone:CN` | 中国手机号 | `rx.test('phone:CN', '13800138000')` |
@@ -146,8 +146,10 @@ rx.use({
 | **密码** | `password:medium` | 中等强度密码 | `rx.test('password:medium', 'Password123')` |
 | | `password:strong` | 强密码 | `rx.test('password:strong', 'Password123!')` |
 
-
-**[内置正则大全](https://github.com/SailingCoder/regex-center/blob/main/docs/REGEX_REFERENCE.md)** —— 收录 100+ 常用正则，点击查看完整说明
+> 💡 提示
+>
+> -   `email` 默认等同于 `email:basic`。
+> -   更多规则如 **颜色值、Hex、UUID、域名** 等，请查阅 [【内置正则大全】](https://github.com/SailingCoder/regex-center/blob/main/docs/REGEX_REFERENCE.md)。
 
 ### 2. 分组语法，统一管理
 ```javascript
