@@ -236,6 +236,20 @@
 <td><code>10.0.0.1</code>、<code>172.16.0.1</code>、<code>192.168.1.1</code>、<code>172.31.255.255</code>、<code>10.255.255.255</code></td>
 <td><code>8.8.8.8</code>、<code>172.15.0.1</code>、<code>192.167.1.1</code>、<code>11.0.0.1</code>、<code>172.32.0.1</code>、<code>193.168.1.1</code></td>
 </tr>
+<tr>
+<td><code>ip:cidr_v4</code></td>
+<td><code>/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/(3[0-2]|[12]?[0-9])$/</code></td>
+<td>IPv4 CIDR网络表示法</td>
+<td><code>192.168.1.0/24</code>、<code>10.0.0.0/8</code>、<code>172.16.0.0/16</code>、<code>0.0.0.0/0</code></td>
+<td><code>192.168.1.0/33</code>、<code>256.1.1.0/24</code>、<code>192.168.1.0</code>、<code>192.168.1.256/24</code></td>
+</tr>
+<tr>
+<td><code>ip:cidr_v6</code></td>
+<td><code>/^([0-9a-fA-F]{0,4}:){2,7}[0-9a-fA-F]{0,4}\/(12[0-8]|1[01][0-9]|[1-9]?[0-9])$|^::\/(12[0-8]|1[01][0-9]|[1-9]?[0-9])$/</code></td>
+<td>IPv6 CIDR网络表示法</td>
+<td><code>2001:db8::/32</code>、<code>fe80::/64</code>、<code>::1/128</code>、<code>::/0</code></td>
+<td><code>2001:db8::/129</code>、<code>2001:db8::</code>、<code>2001:db8::/-1</code>、<code>2001:db8::/130</code></td>
+</tr>
 </tbody>
 </table>
 
@@ -2226,13 +2240,6 @@ console.log(emailRegex);  // /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 <td>IPv6地址格式</td>
 <td><code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>、<code>::1</code></td>
 <td><code>2001:0db8:85a3::8a2e::7334</code>、<code>invalid:ipv6</code></td>
-</tr>
-<tr>
-<td><code>cidr:notation</code> 或 <code>cidr</code></td>
-<td><code>/^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}\/(3[0-2]|[1-2]?[0-9])$/</code></td>
-<td>IPv4 CIDR网络表示法</td>
-<td><code>192.168.1.0/24</code>、<code>10.0.0.0/8</code>、<code>172.16.0.0/16</code></td>
-<td><code>192.168.1.0/33</code>、<code>256.1.1.0/24</code>、<code>192.168.1.0</code></td>
 </tr>
 <tr>
 <td><code>websocketUrl:standard</code> 或 <code>websocketUrl</code></td>

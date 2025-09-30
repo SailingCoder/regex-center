@@ -236,6 +236,20 @@ All regular expressions have been rigorously tested to ensure high accuracy and 
 <td><code>10.0.0.1</code>, <code>172.16.0.1</code>, <code>192.168.1.1</code>, <code>172.31.255.255</code>, <code>10.255.255.255</code></td>
 <td><code>8.8.8.8</code>, <code>172.15.0.1</code>, <code>192.167.1.1</code>, <code>11.0.0.1</code>, <code>172.32.0.1</code>, <code>193.168.1.1</code></td>
 </tr>
+<tr>
+<td><code>ip:cidr_v4</code></td>
+<td><code>/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/(3[0-2]|[12]?[0-9])$/</code></td>
+<td>IPv4 CIDR network notation</td>
+<td><code>192.168.1.0/24</code>, <code>10.0.0.0/8</code>, <code>172.16.0.0/16</code>, <code>0.0.0.0/0</code></td>
+<td><code>192.168.1.0/33</code>, <code>256.1.1.0/24</code>, <code>192.168.1.0</code>, <code>192.168.1.256/24</code></td>
+</tr>
+<tr>
+<td><code>ip:cidr_v6</code></td>
+<td><code>/^([0-9a-fA-F]{0,4}:){2,7}[0-9a-fA-F]{0,4}\/(12[0-8]|1[01][0-9]|[1-9]?[0-9])$|^::\/(12[0-8]|1[01][0-9]|[1-9]?[0-9])$/</code></td>
+<td>IPv6 CIDR network notation</td>
+<td><code>2001:db8::/32</code>, <code>fe80::/64</code>, <code>::1/128</code>, <code>::/0</code></td>
+<td><code>2001:db8::/129</code>, <code>2001:db8::</code>, <code>2001:db8::/-1</code>, <code>2001:db8::/130</code></td>
+</tr>
 </tbody>
 </table>
 
