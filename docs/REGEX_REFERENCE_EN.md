@@ -2373,6 +2373,39 @@ All regular expressions have been rigorously tested to ensure high accuracy and 
 
 ---
 
+## Usage Instructions
+
+### Basic Usage
+
+```javascript
+import { rx } from 'regex-center';
+
+// Use basic type (default group)
+rx.test('test@example.com', 'email');  // true
+
+// Use specific group
+rx.test('test@example.com', 'email:strict');  // true
+
+// Get regular expression
+const emailRegex = rx.get('email');
+console.log(emailRegex);  // /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+```
+
+### Group Syntax Description
+
+- **Single Type**: Use type name directly, such as `email`, `phone`
+- **Group Type**: Use `type:group` format, such as `email:strict`, `phone:CN`
+- **Default Group**: Each type has a default group, used when no group is specified
+
+### Notes
+
+1. All regular expressions have been rigorously tested to ensure accuracy
+2. Group names are case-sensitive
+3. It is recommended to test thoroughly before using in production environment
+4. Some complex regex may affect performance, please choose according to actual needs
+
+---
+
 ## Complete Usage Guide
 
 ### 30-Second Quick Start
