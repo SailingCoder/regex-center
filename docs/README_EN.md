@@ -130,7 +130,7 @@ rx.use({
 
 | Type | Syntax | Description | Example |
 |------|--------|-------------|---------|
-| **Email** | `email` | Basic email format | `rx.test('email', 'user@example.com')` |
+| **Email** | `email` / `email:basic` | Basic email format (default) | `rx.test('email', 'user@example.com')` |
 | | `email:strict` | Strict email format | `rx.test('email:strict', 'user@company.com')` |
 | | `email:enterprise` | Enterprise email format | `rx.test('email:enterprise', 'admin@company.com')` |
 | **Phone** | `phone:CN` | Chinese phone number | `rx.test('phone:CN', '13800138000')` |
@@ -541,3 +541,4 @@ For issues and feature requests, please submit an [Issue](https://github.com/Sai
 - [GitHub Repository](https://github.com/SailingCoder/regex-center)
 - [NPM Package](https://www.npmjs.com/package/regex-center)
 - [Complete Built-in Regex Reference (100+)](https://github.com/SailingCoder/regex-center/blob/main/docs/REGEX_REFERENCE_EN.md)
+
